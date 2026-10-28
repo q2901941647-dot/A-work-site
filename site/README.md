@@ -1,15 +1,9 @@
-# 唐睿 · AI 短视频编导作品集 2027
+# 唐睿 · 作品集 2027
 
-> 16:9 演示式作品集（23 页），单文件 HTML + 静态资源，可直接部署到 GitHub Pages。  
-> 带动效：逐字入场、遮片揭示、Ken Burns、光标光晕、章节圆点、磁性 hover、视差水印。
-
-**在线预览**：部署后访问 `https://<你的用户名>.github.io/<仓库名>/`
-
----
 
 ## 这是什么
 
-唐睿（2027 届 · 广州华商学院 网络与新媒体）应聘 **AI 短视频编导** 岗位的作品集。
+唐睿（2027 届 · 网络与新媒体）的作品集。
 
 - **4 个项目**：原创影片《慈悲的算术》4′30″、AI 科幻短剧《记忆协议》120″、网易互娱 AI 漫剧工业化管线、企业宣传短视频
 - **3 份文档**：脚本文档（逐镜到秒）、**分镜手稿（手绘六镜）**、内容策划案例（定位 / 矩阵 / 60 条选题 / 30 天排期）
@@ -72,31 +66,8 @@ python -m http.server 8000
 
 ---
 
-## 部署到 GitHub Pages
-
-1. 新建仓库，上传本目录全部文件（**必须带 `.nojekyll`**）
-2. Settings → Pages → Source: `main` / `/ (root)` → Save
-3. 访问 `https://<用户名>.github.io/<仓库名>/`
-
-```bash
-git init && git add . && git commit -m "portfolio: AI short video director 2027"
-git branch -M main && git remote add origin https://github.com/<用户名>/<仓库名>.git
-git push -u origin main
-```
-
 ---
 
-## 目录结构
-
-```
-.
-├── index.html                    # 23 页单文件（样式 / 动效 / 翻页）
-├── assets/                       # 影片帧 / 分镜手稿 / 漫剧工作流 / 企业宣传 / 二维码
-├── download/
-│   └── 唐睿-AI短视频编导-作品集-2027.pdf   # 16:9 PDF（13.333×7.5in，23 页）
-├── .nojekyll
-├── 404.html
-└── README.md
 ```
 
 ---
@@ -121,4 +92,4 @@ git push -u origin main
 
 ---
 
-*唐睿 · 2027 届 · 广州华商学院 网络与新媒体*
+*唐睿 · 2027 届 ·  网络与新媒体*
