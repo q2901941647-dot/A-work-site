@@ -1,0 +1,1300 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>唐睿 · AI 短视频编导 · 作品集 2027</title>
+<style>
+/* ================= 设计令牌 ================= */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#04080F; --paper:#F2F5FA;
+  --ink:#0A1622; --ink2:#33445A; --ink3:#6B7C92;
+  --ice:#8FD8FF; --blue:#4A9EFF; --amber:#FFB020;
+  --sans:"Bahnschrift","Microsoft YaHei UI","Microsoft YaHei","PingFang SC",sans-serif;
+  --disp:"Bahnschrift Condensed","Bahnschrift","Arial Black",sans-serif;
+  --serif:Georgia,"Times New Roman",serif;
+  --mono:Consolas,"Courier New",monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--navy);color:#EAF2FF;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ================= 16:9 居中舞台 ================= */
+.deck{display:flex;flex-direction:column;align-items:center}
+.slide{position:relative;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.stage{
+  position:relative;overflow:hidden;container-type:size;
+  width:min(100vw, calc(100vh * 16 / 9));
+  height:min(56.25vw, 100vh);
+}
+.stage.dark{color:#EAF2FF;background:
+  radial-gradient(120% 90% at 15% -10%, #0B1E3A 0%, rgba(6,14,28,0) 60%),
+  radial-gradient(90% 80% at 95% 0%, #0A1A33 0%, rgba(4,8,15,0) 62%),
+  linear-gradient(165deg,#050B17 0%,#04080F 55%,#02040A 100%);}
+.stage.dark::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(143,216,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(143,216,255,.06) 1px,transparent 1px);
+  background-size:6.25cqw 6.25cqw;mask-image:radial-gradient(120% 90% at 50% 0%,#000 25%,transparent 100%)}
+.stage.dark::after{content:"";position:absolute;inset:-30%;pointer-events:none;z-index:0;
+  background:radial-gradient(closest-side,rgba(74,158,255,.15),transparent 70%);
+  animation:drift 26s ease-in-out infinite alternate;mix-blend-mode:screen}
+@keyframes drift{0%{transform:translate(-6%,-4%) scale(1)}100%{transform:translate(8%,6%) scale(1.15)}}
+.stage.light{background:var(--paper);color:var(--ink)}
+.stage.light::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(10,22,34,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(10,22,34,.05) 1px,transparent 1px);
+  background-size:6.25cqw 6.25cqw}
+.stage>*{position:relative;z-index:2}
+
+/* ================= 组件 ================= */
+.pad{position:absolute;inset:0;padding:5.2cqh 5.2cqw 5.2cqh;display:flex;flex-direction:column;justify-content:center}
+.metabar{position:absolute;left:0;right:0;bottom:0;height:3.6cqh;display:flex;align-items:center;justify-content:space-between;
+  padding:0 5.2cqw;font-family:var(--mono);font-size:.8cqw;letter-spacing:.16em;border-top:1px solid rgba(143,216,255,.16);color:rgba(180,205,235,.72)}
+.stage.light .metabar{border-top-color:rgba(10,22,34,.10);color:var(--ink3)}
+.metabar .dot{display:inline-block;width:.5cqw;height:.5cqw;border-radius:50%;background:var(--amber);margin-right:.5cqw;vertical-align:middle}
+.topmeta{position:absolute;left:0;right:0;top:0;height:3.4cqh;display:flex;align-items:center;justify-content:space-between;
+  padding:0 5.2cqw;font-family:var(--mono);font-size:.76cqw;letter-spacing:.18em;color:rgba(180,205,235,.55);border-bottom:1px solid rgba(143,216,255,.10)}
+.stage.light .topmeta{color:rgba(10,22,34,.42);border-bottom-color:rgba(10,22,34,.08)}
+.kicker{display:flex;align-items:center;gap:1.1cqw;font-size:.86cqw;letter-spacing:.30em;color:var(--ice);text-transform:uppercase}
+.kicker i{width:.62cqw;height:.62cqw;border:1px solid currentColor;border-radius:50%;display:inline-block}
+.kicker b{font-weight:400;color:rgba(180,205,235,.55)}
+.stage.light .kicker{color:var(--blue)}
+.stage.light .kicker b{color:var(--ink3)}
+h1.big{font-size:3.0cqw;line-height:1.22;font-weight:700;letter-spacing:.01em;margin-top:1.4cqh}
+h1.big .thin{font-weight:300;color:rgba(234,242,255,.72)}
+.stage.light h1.big .thin{color:var(--ink2)}
+.sub{font-family:var(--serif);font-style:italic;font-size:1.04cqw;color:rgba(180,205,235,.62);margin-top:.9cqh;letter-spacing:.04em}
+.stage.light .sub{color:var(--ink3)}
+.hr{height:1px;background:linear-gradient(90deg,rgba(143,216,255,.6),rgba(143,216,255,0) 65%);margin:2.2cqh 0 1.8cqh}
+.stage.light .hr{background:linear-gradient(90deg,rgba(10,22,34,.32),rgba(10,22,34,0) 65%)}
+.lead{font-size:1.1cqw;line-height:1.95;color:rgba(215,228,244,.88)}
+.stage.light .lead{color:var(--ink2)}
+.lead em,.mini em{color:var(--amber);font-style:normal;font-weight:700}
+.stage.light .lead em,.stage.light .mini em{color:#C2410C}
+.mini{font-size:.92cqw;line-height:1.85;color:rgba(200,216,238,.78)}
+.stage.light .mini{color:var(--ink2)}
+.mono{font-family:var(--mono);font-size:.8cqw;letter-spacing:.14em;color:rgba(143,216,255,.78)}
+.stage.light .mono{color:var(--blue)}
+.cap{font-family:var(--serif);font-style:italic;font-size:.84cqw;color:rgba(160,185,215,.62);margin-top:.8cqh}
+.stage.light .cap{color:var(--ink3)}
+.glass{background:rgba(143,216,255,.055);border:1px solid rgba(143,216,255,.16);border-radius:1cqw}
+.stage.light .glass{background:#fff;border-color:rgba(10,22,34,.09);box-shadow:0 .5cqw 1.8cqw rgba(16,36,60,.06)}
+.card{transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,border-color .45s}
+.card:hover{transform:translateY(-.5cqh);border-color:rgba(255,176,32,.5);box-shadow:0 1.2cqh 3cqh rgba(0,0,0,.35)}
+.stage.light .card:hover{box-shadow:0 1.4cqh 3.2cqh rgba(16,36,60,.14)}
+.pill{display:inline-flex;align-items:center;gap:.5cqw;font-family:var(--mono);font-size:.72cqw;letter-spacing:.12em;
+  padding:.32cqh .75cqw;border-radius:99px;border:1px solid rgba(143,216,255,.35);color:var(--ice)}
+.stage.light .pill{border-color:rgba(74,158,255,.35);color:#1D5FA8}
+.pill.amber{border-color:rgba(255,176,32,.5);color:var(--amber)}
+.shot{position:relative;overflow:hidden;border-radius:.7cqw;border:1px solid rgba(143,216,255,.16);background:#000}
+.stage.light .shot{border-color:rgba(10,22,34,.10);box-shadow:0 .4cqw 1.4cqw rgba(16,36,60,.10)}
+.shot img{display:block;width:100%;height:100%;object-fit:cover}
+.shot .tag{position:absolute;left:0;bottom:0;width:100%;padding:3cqh 1cqw 1cqh;
+  font-family:var(--mono);font-size:.68cqw;letter-spacing:.1em;color:#EAF2FF;
+  background:linear-gradient(0deg,rgba(2,5,12,.94),rgba(2,5,12,0))}
+.cols{display:grid}
+.c2{grid-template-columns:1fr 1fr}
+.c3{grid-template-columns:repeat(3,1fr)}
+.c4{grid-template-columns:repeat(4,1fr)}
+.c5{grid-template-columns:repeat(5,1fr)}
+.c6{grid-template-columns:repeat(6,1fr)}
+table{width:100%;border-collapse:collapse;font-size:.9cqw}
+th{font-weight:400;text-align:left;font-family:var(--mono);font-size:.72cqw;letter-spacing:.14em;color:var(--ice);
+  padding:1.05cqh .7cqw;border-bottom:1px solid rgba(143,216,255,.25)}
+.stage.light th{color:#1D5FA8;border-bottom-color:rgba(10,22,34,.18)}
+td{padding:1cqh .7cqw;border-bottom:1px solid rgba(143,216,255,.10);color:rgba(210,224,242,.86);line-height:1.5;vertical-align:top}
+.stage.light td{color:var(--ink2);border-bottom-color:rgba(10,22,34,.07)}
+td.k{color:#EAF2FF;font-weight:700}
+.stage.light td.k{color:var(--ink)}
+td.a{color:var(--amber);white-space:nowrap}
+.stage.light td.a{color:#C2410C}
+
+/* ================= 进场动效 ================= */
+.rv{opacity:0;transform:translateY(2.2cqh);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.in .rv{opacity:1;transform:none}
+.d1{transition-delay:.10s}.d2{transition-delay:.20s}.d3{transition-delay:.30s}
+.d4{transition-delay:.40s}.d5{transition-delay:.50s}.d6{transition-delay:.60s}
+
+/* ================= 封面占位设计 ================= */
+.wm{position:absolute;left:50%;top:11.5cqh;transform:translateX(-50%);font-family:var(--disp);font-weight:700;
+  font-size:12.2cqw;line-height:.82;letter-spacing:.01em;color:transparent;-webkit-text-stroke:1px rgba(143,216,255,.30);white-space:nowrap;z-index:1}
+.wm2{position:absolute;left:50%;top:25.6cqh;transform:translateX(-50%);font-family:var(--disp);font-weight:700;
+  font-size:1.9cqw;letter-spacing:.58em;color:rgba(143,216,255,.30);white-space:nowrap;z-index:1}
+.cover-txt{position:absolute;left:5.2cqw;top:39cqh;z-index:3}
+.ph{position:absolute;right:5.2cqw;top:16.5cqh;width:36cqw;aspect-ratio:16/9;z-index:3;border-radius:1.1cqw;overflow:hidden;
+  background:linear-gradient(135deg,#0B1E3A 0%,#12325C 45%,#0A1830 100%);border:1px solid rgba(143,216,255,.28);
+  box-shadow:0 3cqh 6cqh rgba(0,0,0,.55)}
+.ph .mesh{position:absolute;inset:0;
+  background:radial-gradient(60% 70% at 20% 20%, rgba(255,176,32,.30), transparent 60%),
+             radial-gradient(50% 60% at 85% 75%, rgba(74,158,255,.42), transparent 62%),
+             radial-gradient(40% 50% at 60% 40%, rgba(143,216,255,.22), transparent 70%);
+  filter:blur(6px);animation:mesh 18s ease-in-out infinite alternate}
+@keyframes mesh{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.18) translate(-3%,4%)}}
+.ph .grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.10) 1px,transparent 1px);
+  background-size:3.125cqw 3.125cqw;opacity:.55}
+.ph .ring{position:absolute;left:50%;top:50%;width:15cqw;height:15cqw;margin:-7.5cqw 0 0 -7.5cqw;border-radius:50%;
+  border:1px solid rgba(255,255,255,.22);animation:spin 40s linear infinite}
+.ph .ring::before{content:"";position:absolute;inset:2.2cqw;border-radius:50%;border:1px dashed rgba(255,255,255,.16)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ph .ph-label{position:absolute;left:1.2cqw;bottom:1.1cqw;font-family:var(--mono);font-size:.7cqw;letter-spacing:.2em;color:rgba(255,255,255,.75)}
+.ph .ph-tag{position:absolute;right:1.1cqw;top:1.1cqw;font-family:var(--mono);font-size:.64cqw;letter-spacing:.14em;
+  padding:.28cqh .55cqw;border:1px solid rgba(255,255,255,.35);border-radius:99px;color:rgba(255,255,255,.8)}
+.ph .cor{position:absolute;width:1.7cqw;height:1.7cqw;border:1px solid rgba(255,255,255,.5)}
+.ph .cor.tl{left:.7cqw;top:.7cqw;border-right:0;border-bottom:0}
+.ph .cor.tr{right:.7cqw;top:.7cqw;border-left:0;border-bottom:0}
+.ph .cor.bl{left:.7cqw;bottom:.7cqw;border-right:0;border-top:0}
+.ph .cor.br{right:.7cqw;bottom:.7cqw;border-left:0;border-top:0}
+.phrow{position:absolute;right:5.2cqw;top:49cqh;width:36cqw;display:grid;grid-template-columns:repeat(3,1fr);gap:.7cqw;z-index:3}
+.phrow .b{height:1.4cqh;border-radius:99px;background:linear-gradient(90deg,rgba(143,216,255,.26),rgba(143,216,255,.05));border:1px solid rgba(143,216,255,.16)}
+
+/* ================= HUD ================= */
+.hud{position:fixed;left:0;right:0;top:0;height:3px;background:rgba(143,216,255,.12);z-index:120}
+.hud .bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--amber));transition:width .2s}
+.counter,.hint{display:none!important}
+
+/* ================= 打印 ================= */
+@page{size:13.333in 7.5in;margin:0}
+@media print{
+  html,body{background:#000}
+  .slide{width:13.333in;height:7.5in;page-break-after:always;break-after:page}
+  .slide:last-child{page-break-after:auto}
+  .stage{width:13.333in!important;height:7.5in!important}
+  .hud,.counter,.hint{display:none!important}
+  .rv{opacity:1!important;transform:none!important}
+  .stage.dark::after,.ph .mesh,.ph .ring{animation:none!important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+/* ================= 高级动效层 ================= */
+.fx-grain{position:fixed;inset:-10%;z-index:118;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  animation:grain 1.1s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-1.5%,1%)}50%{transform:translate(1%,-1.5%)}75%{transform:translate(-1%,-1%)}100%{transform:translate(0,0)}}
+
+.fx-spot{position:fixed;left:0;top:0;width:46vw;height:46vw;margin:-23vw 0 0 -23vw;border-radius:50%;pointer-events:none;z-index:117;
+  background:radial-gradient(closest-side,rgba(143,216,255,.12),rgba(143,216,255,0) 72%);
+  mix-blend-mode:screen;opacity:0;transition:opacity .8s ease;will-change:transform}
+.fx-spot.on{opacity:1}
+
+.dots{position:fixed;right:1.15vw;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:119}
+.dots i{display:block;width:6px;height:6px;border-radius:50%;background:rgba(200,220,245,.22);cursor:pointer;
+  transition:background .35s,height .35s,border-radius .35s,box-shadow .35s}
+.dots i:hover{background:rgba(255,176,32,.6)}
+.dots i.on{background:var(--amber);height:18px;border-radius:3px;box-shadow:0 0 0 4px rgba(255,176,32,.14)}
+
+/* Ken Burns：全幅项目封面缓慢推近 */
+.in .kb{animation:kb 18s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes kb{from{transform:scale(1.015)}to{transform:scale(1.075)}}
+
+/* 遮片揭示：图片从下往上揭开 */
+.stage:not(.in) .shot img{clip-path:inset(0 0 100% 0)}
+.in .shot img{clip-path:inset(0)}
+.stage .shot img{transition:clip-path 1.05s cubic-bezier(.16,.84,.2,1),transform 1s cubic-bezier(.16,.84,.2,1)}
+
+/* 逐字入场 */
+.ch{display:inline-block;opacity:0;transform:translateY(.34em);transition:opacity .72s cubic-bezier(.2,.7,.2,1),transform .72s cubic-bezier(.2,.7,.2,1)}
+.in .ch{opacity:1;transform:none}
+
+/* 分镜卡：纸感 */
+.sbcard{background:#F6F4ED;border-color:rgba(10,22,34,.16)!important}
+.sbcap{font-family:var(--mono);font-size:.6cqw;letter-spacing:.08em;color:var(--ink3);margin-top:.5cqh;text-align:center}
+.sbcard:hover{transform:translateY(-.6cqh) rotate(-.35deg);box-shadow:0 1.4cqh 3cqh rgba(16,36,60,.16)!important}
+
+/* 磁性 pill */
+.pill{will-change:transform}
+
+@media (prefers-reduced-motion:reduce){
+  .fx-grain,.fx-spot{display:none}
+  .in .kb{animation:none}
+  .stage:not(.in) .shot img{clip-path:none}
+  .ch{opacity:1;transform:none;transition:none}
+}
+
+@media print{
+  .fx-grain,.fx-spot,.dots{display:none!important}
+  .in .kb{animation:none!important;transform:none!important}
+  .stage .shot img{clip-path:none!important}
+  .ch{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+<div class="hud"><div class="bar" id="bar"></div></div>
+<div class="counter"><b id="cur">01</b> / <span id="tot">22</span></div>
+<div class="hint">↑ ↓ &nbsp;← → &nbsp;翻页 · SCROLL</div>
+
+
+<div class="fx-grain"></div>
+<div class="fx-spot" id="spot"></div>
+<div class="dots" id="dots"></div>
+
+<div class="deck" id="deck">
+
+<!-- ============ 01 封面 ============ -->
+<section class="slide"><div class="stage dark">
+  <div class="wm">PORTFOLIO</div>
+  <div class="wm2">A I &nbsp; S H O R T &nbsp; V I D E O &nbsp; 2 0 2 7</div>
+
+  <div class="cover-txt">
+    <span class="pill amber">2027 CAMPUS RECRUITING</span>
+    <div style="font-size:5.2cqw;font-weight:700;letter-spacing:.14em;margin-top:2.2cqh">唐 睿</div>
+    <div class="mini" style="margin-top:1.1cqh;color:rgba(220,232,248,.85);font-size:1.02cqw;letter-spacing:.06em">
+      AI 短视频编导 · AIGC 视听全链路 · 游戏泛娱乐二创
+    </div>
+    <div style="display:flex;gap:.8cqw;margin-top:2.6cqh;flex-wrap:wrap;max-width:28cqw">
+      <span class="pill">选题策划</span><span class="pill">脚本分镜</span>
+      <span class="pill">AI 生成</span><span class="pill">配音剪辑</span><span class="pill">数据复盘</span>
+    </div>
+    <div class="mono" style="margin-top:3.6cqh;color:rgba(160,190,220,.5);font-size:.76cqw">
+      PORTFOLIO 2027 &nbsp;/&nbsp; 23 SLIDES &nbsp;/&nbsp; 16:9
+    </div>
+  </div>
+
+  <div class="ph">
+    <div class="mesh"></div><div class="grid"></div><div class="ring"></div>
+    <div class="cor tl"></div><div class="cor tr"></div><div class="cor bl"></div><div class="cor br"></div>
+    <div class="ph-tag">16 : 9 · 1920×1080</div>
+    <div class="ph-label">SELECTED WORKS &nbsp;2025 — 2027</div>
+  </div>
+  <div class="phrow"><div class="b"></div><div class="b"></div><div class="b"></div></div>
+
+  <div style="position:absolute;left:5.2cqw;bottom:9.4cqh;z-index:3;display:flex;gap:3.4cqw">
+    <div><div class="mono" style="font-size:.64cqw;color:rgba(160,190,220,.45)">PHONE</div><div class="mono" style="font-size:.8cqw;margin-top:.3cqh">134-1016-4607</div></div>
+    <div><div class="mono" style="font-size:.64cqw;color:rgba(160,190,220,.45)">MAIL</div><div class="mono" style="font-size:.8cqw;margin-top:.3cqh">2901941647@qq.com</div></div>
+    <div><div class="mono" style="font-size:.64cqw;color:rgba(160,190,220,.45)">AVAILABLE</div><div class="mono" style="font-size:.8cqw;margin-top:.3cqh">12 月初 · 5 天/周</div></div>
+  </div>
+
+  <div class="metabar">
+    <span><i class="dot"></i>NO HOOK. NO STORY.</span>
+    <span>SHOWREEL &amp; PRODUCTION NOTES</span>
+    <span>唐睿 &nbsp;·&nbsp; 广州华商学院</span>
+  <span>01</span></div>
+</div></section>
+
+<!-- ============ 02 定位 ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● POSITIONING</span><span>AI SHORT VIDEO · 2027</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>POSITIONING <b>/ 我 是 谁</b></div>
+    <h1 class="big rv">一个能把「热梗」做成「产线」的人</h1>
+    <div class="sub rv">Not a showreel. A production line, and the judgment behind it.</div>
+    <div class="hr rv"></div>
+
+    <div class="cols c2 rv" style="margin-top:2.4cqh;gap:4cqw">
+      <div>
+        <p class="lead">
+          我的能力可以压成一句话：<em>从一句话选题，到一条能上线的成片，中间不换人。</em><br><br>
+          四个项目分别证明四件事——一个人能走完整流程、能做多镜头叙事、能进工业化产线、能接商业需求。
+        </p>
+        <div style="display:flex;gap:3cqw;margin-top:3.6cqh">
+          <div><div style="font-family:var(--disp);font-size:2.4cqw;font-weight:700;color:#1D5FA8">4′30″</div><div class="mono" style="font-size:.7cqw">原创影片</div></div>
+          <div><div style="font-family:var(--disp);font-size:2.4cqw;font-weight:700;color:#1D5FA8">120″</div><div class="mono" style="font-size:.7cqw">80+ 镜短剧</div></div>
+          <div><div style="font-family:var(--disp);font-size:2.4cqw;font-weight:700;color:#1D5FA8">60%</div><div class="mono" style="font-size:.7cqw">管线提效</div></div>
+          <div><div style="font-family:var(--disp);font-size:2.4cqw;font-weight:700;color:#1D5FA8">60 条</div><div class="mono" style="font-size:.7cqw">选题库</div></div>
+        </div>
+        <div style="margin-top:3.4cqh;border-left:2px solid #C2410C;padding-left:1.4cqw">
+          <div style="font-family:var(--serif);font-style:italic;font-size:1.05cqw;line-height:1.85;color:var(--ink2)">
+            「一条片子好看，是运气；<br>十条都还能看，才是方法。」
+          </div>
+          <div class="cap" style="margin-top:.6cqh">这是我对我自己产线的要求</div>
+        </div>
+      </div>
+      <div class="glass card" style="padding:2.6cqh 2.2cqw">
+        <div class="mono" style="margin-bottom:1.2cqh">INDEX / 索引</div>
+        <div style="display:grid;gap:.9cqh;font-size:.88cqw;color:#33445A">
+          <div style="display:flex;justify-content:space-between"><span>关于我 / ABOUT</span><span class="mono">03</span></div>
+          <div style="display:flex;justify-content:space-between"><span>能力对照 / CAPABILITY</span><span class="mono">04</span></div>
+          <div style="display:flex;justify-content:space-between"><span>制作管线 / PIPELINE</span><span class="mono">05</span></div>
+          <div style="display:flex;justify-content:space-between"><span>01 原创影片 / 4′30″</span><span class="mono">06–08</span></div>
+          <div style="display:flex;justify-content:space-between"><span>02 科幻短剧 / 120″</span><span class="mono">09–10</span></div>
+          <div style="display:flex;justify-content:space-between"><span>03 漫剧工业化 / 网易互娱</span><span class="mono">11–12</span></div>
+          <div style="display:flex;justify-content:space-between"><span>04 商业项目 / 企业宣传</span><span class="mono">13</span></div>
+          <div style="display:flex;justify-content:space-between"><span>账号方案 / 主播二创</span><span class="mono">14</span></div>
+          <div style="display:flex;justify-content:space-between"><span>账号作品 / 抖音链接</span><span class="mono">15</span></div>
+          <div style="display:flex;justify-content:space-between"><span>脚本文档 / SCRIPT</span><span class="mono">16</span></div>
+          <div style="display:flex;justify-content:space-between"><span>分镜手稿 / STORYBOARD</span><span class="mono">17</span></div>
+          <div style="display:flex;justify-content:space-between"><span>脚本 EP02–03 / SCRIPT</span><span class="mono">18</span></div>
+          <div style="display:flex;justify-content:space-between"><span>策划案例 / CASE</span><span class="mono">19–20</span></div>
+          <div style="display:flex;justify-content:space-between"><span>创作解析 / PARSING</span><span class="mono">21</span></div>
+          <div style="display:flex;justify-content:space-between"><span>数据复盘 / DATA</span><span class="mono">22</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>POSITIONING</span><span>02</span></div>
+</div></section>
+
+<!-- ============ 03 关于我 ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● ABOUT ME</span><span>AI SHORT VIDEO · 2027</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>ABOUT ME <b>/ 关 于 我</b></div>
+    <h1 class="big rv">Hi, I am <span style="font-family:var(--serif);font-style:italic">Tang Rui</span></h1>
+    <div class="sub rv">网络与新媒体 · 2027 届 · 广州华商学院 &nbsp;|&nbsp; 网易互娱 × 字节跳动 内容制作实习</div>
+    <div class="hr rv"></div>
+
+    <div class="cols c3 rv" style="gap:3.2cqw">
+      <div>
+        <div class="mono">01 / 我是谁</div>
+        <p class="mini" style="margin-top:1cqh">一个<em>同时懂「钩子」和「管线」</em>的短视频创作者。科班出身，但更多时间泡在评论区里——知道什么梗能让人停下来，也知道停下来之后那 40 秒靠什么留住人。</p>
+      </div>
+      <div>
+        <div class="mono">02 / 我在做什么</div>
+        <p class="mini" style="margin-top:1cqh">把 AI 生成变成<em>可交付的产能</em>：写提示词、控角色一致性、拆镜头、配音、卡点、调色，一条链路打通。不追求一条惊艳，追求每周稳定出片。</p>
+      </div>
+      <div>
+        <div class="mono">03 / 更多信息</div>
+        <div class="mini" style="margin-top:1cqh;line-height:1.95">
+          岗位 · AI 短视频编导<br>
+          到岗 · 12 月初 / 5 天/周 / 6 个月+<br>
+          电话 · 134-1016-4607<br>
+          邮箱 · 2901941647@qq.com
+        </div>
+      </div>
+    </div>
+
+    <div class="hr" style="margin:2.4cqh 0 1.4cqh"></div>
+    <div class="mono rv" style="margin-bottom:1.1cqh">WORK EXPERIENCE / 工作经历</div>
+    <div class="cols c4 rv" style="gap:1.8cqw">
+      <div class="glass card" style="padding:2cqh 1.5cqw">
+        <div class="mono" style="font-size:.68cqw">2026.09 — 至今</div>
+        <div style="font-size:.98cqw;font-weight:700;margin-top:.4cqh">网易互娱 · 内容制作</div>
+        <p class="mini" style="font-size:.82cqw;margin-top:.7cqh">AI 漫剧：剧本拆解 → 三视图 → 分镜 → 音频驱动；提示词模板库，<b>提效 60%</b>。</p>
+      </div>
+      <div class="glass card" style="padding:2cqh 1.5cqw">
+        <div class="mono" style="font-size:.68cqw">2026.01 — 2026.03</div>
+        <div style="font-size:.98cqw;font-weight:700;margin-top:.4cqh">字节跳动 · 视觉制作</div>
+        <p class="mini" style="font-size:.82cqw;margin-top:.7cqh">封面 / 插画 / 分镜概念量产；跟完播与 CTR 调优，<b>效率 +30%</b>。</p>
+      </div>
+      <div class="glass card" style="padding:2cqh 1.5cqw">
+        <div class="mono" style="font-size:.68cqw">2026.06 — 2026.09</div>
+        <div style="font-size:.98cqw;font-weight:700;margin-top:.4cqh">番禺电缆 · 短视频</div>
+        <p class="mini" style="font-size:.82cqw;margin-top:.7cqh">商业短视频全流程：卖点转选题、微距剪辑、拟音与动效。</p>
+      </div>
+      <div class="glass card" style="padding:2cqh 1.5cqw">
+        <div class="mono" style="font-size:.68cqw">2025.07 — 2025.09</div>
+        <div style="font-size:.98cqw;font-weight:700;margin-top:.4cqh">南方农业报 · 新媒体</div>
+        <p class="mini" style="font-size:.82cqw;margin-top:.7cqh">选题策划、图文编排、视觉排版；锤炼信息结构。</p>
+      </div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>ABOUT ME</span><span>03</span></div>
+</div></section>
+
+<!-- ============ 04 能力对照 ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● CAPABILITY</span><span>AI SHORT VIDEO · 2027</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>CAPABILITY <b>/ 能 力 与 岗 位 需 求 的 对 照</b></div>
+    <h1 class="big rv">六 件 事，<span class="thin">每 一 件 都 指 得 到 一 个 项 目</span></h1>
+    <div class="sub rv">不放自评星级，放证据位置 —— 可以随时翻到那一页核对。</div>
+    <div class="hr rv"></div>
+    <table class="rv">
+      <tr><th style="width:30%">岗位需要</th><th style="width:52%">我的对应能力</th><th style="width:18%">证据</th></tr>
+      <tr><td class="k">短视频选题策划，把握热点与用户偏好</td><td>游戏泛娱乐二创账号方案 + 60 条选题库（标注热点类型 / 形式 / AI 介入度 / 优先级）；热点 24 小时快反流程</td><td class="a">S14 · S19</td></tr>
+      <tr><td class="k">独立完成选题、脚本、内容设计与制作落地</td><td>4′30″ 原创短片：剧本 → 34 镜分镜 → 画面 → 声音 → 双语字幕，全流程一人完成；120″ 短剧 80+ 镜台本</td><td class="a">S06–S10</td></tr>
+      <tr><td class="k">账号定位、人设与系列化内容设计</td><td>《主播的另一条时间线》：母题句式 + 固定五段结构 + 固定尾句 + 固定视觉符号</td><td class="a">S14–S17</td></tr>
+      <tr><td class="k">结合播放、互动、涨粉做数据复盘</td><td>3 秒留存 / 完播 / 互动 / 涨粉四指标 + 四象限归因 + 单变量迭代规则</td><td class="a">S21</td></tr>
+      <tr><td class="k">用 AI 独立完成画面、配音与剪辑</td><td>Midjourney / 即梦 / 可灵 / Runway / ComfyUI；PR / 剪映 / AE；六工位 SOP + 8 项链检</td><td class="a">S05 · S11–S12</td></tr>
+      <tr><td class="k">了解主流游戏、主播与社区文化</td><td>《第五人格》AI 漫剧项目（三视图 / 分镜板 / 音频驱动）；王者荣耀、火影名场面二创；鸣潮 384 天 / 80 级</td><td class="a">S11–S14</td></tr>
+      <tr><td class="k">剧情 / 搞笑 / 整活 / 游戏方向有作品</td><td>剧情向短剧 + 影像论文向短片 + 游戏二创三集脚本（含台词分镜，可直接开机）</td><td class="a">S06–S10 · S16</td></tr>
+    </table>
+    <div class="glass rv d2" style="margin-top:2.4cqh;padding:2.2cqh 2.2cqw">
+      <div class="mini" style="font-size:.95cqw">
+        <b>一句话：</b>我做的内容不是「给观众看游戏」，是「给观众看人」。所以我的账号方案不写攻略，写主播的遗憾——这是我判断这类内容能不能跑起来的前提。
+      </div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>CAPABILITY</span><span>04</span></div>
+</div></section>
+
+<!-- ============ 05 管线 ============ -->
+<section class="slide"><div class="stage dark">
+  <div class="topmeta"><span>● PIPELINE</span><span>AI SHORT VIDEO · 2027</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>PIPELINE <b>/ 一 个 人 的 六 个 工 位</b></div>
+    <h1 class="big rv">从 一 句 话 到 一 条 片，<span class="thin">中 间 不 换 人</span></h1>
+    <div class="sub rv">每个工位都有输入、产出物和过检标准 —— 这是「能跑量」和「能做一条」的区别。</div>
+    <div class="hr rv"></div>
+
+    <div class="cols c6 rv" style="gap:1.2cqw">
+      <div class="glass card" style="padding:2.2cqh 1.2cqw;border-color:rgba(74,158,255,.35)">
+        <div class="mono">01</div><div style="font-size:1.05cqw;font-weight:700;margin-top:.6cqh">选题</div>
+        <p class="mini" style="font-size:.8cqw;margin-top:.7cqh">热榜 / 评论 / 数据 → 一句话选题</p>
+        <div class="mono" style="font-size:.66cqw;margin-top:1.4cqh;color:rgba(160,185,215,.5)">能一句话说完<br>只有一种情绪</div>
+      </div>
+      <div class="glass card" style="padding:2.2cqh 1.2cqw;border-color:rgba(74,158,255,.35)">
+        <div class="mono">02</div><div style="font-size:1.05cqw;font-weight:700;margin-top:.6cqh">脚本</div>
+        <p class="mini" style="font-size:.8cqw;margin-top:.7cqh">钩子—情境—爆点—回落—尾句</p>
+        <div class="mono" style="font-size:.66cqw;margin-top:1.4cqh;color:rgba(160,185,215,.5)">前 3 秒有钩子<br>结尾有固定动作</div>
+      </div>
+      <div class="glass card" style="padding:2.2cqh 1.2cqw;border-color:rgba(143,216,255,.45)">
+        <div class="mono">03</div><div style="font-size:1.05cqw;font-weight:700;margin-top:.6cqh">画面</div>
+        <p class="mini" style="font-size:.8cqw;margin-top:.7cqh">角色锚点图 → 图生视频</p>
+        <div class="mono" style="font-size:.66cqw;margin-top:1.4cqh;color:rgba(160,185,215,.5)">角色一致 / 手部完整<br>无乱码文字</div>
+      </div>
+      <div class="glass card" style="padding:2.2cqh 1.2cqw;border-color:rgba(143,216,255,.45)">
+        <div class="mono">04</div><div style="font-size:1.05cqw;font-weight:700;margin-top:.6cqh">声音</div>
+        <p class="mini" style="font-size:.8cqw;margin-top:.7cqh">旁白 / 拟音 / 情绪卡点</p>
+        <div class="mono" style="font-size:.66cqw;margin-top:1.4cqh;color:rgba(160,185,215,.5)">5–6 字/秒<br>重音落在钩子上</div>
+      </div>
+      <div class="glass card" style="padding:2.2cqh 1.2cqw;border-color:rgba(255,176,32,.45)">
+        <div class="mono" style="color:var(--amber)">05</div><div style="font-size:1.05cqw;font-weight:700;margin-top:.6cqh">剪辑</div>
+        <p class="mini" style="font-size:.8cqw;margin-top:.7cqh">卡点 / 转场 / 调色 / 封面</p>
+        <div class="mono" style="font-size:.66cqw;margin-top:1.4cqh;color:rgba(160,185,215,.5)">小屏可读<br>字幕不压脸</div>
+      </div>
+      <div class="glass card" style="padding:2.2cqh 1.2cqw;border-color:rgba(255,176,32,.45)">
+        <div class="mono" style="color:var(--amber)">06</div><div style="font-size:1.05cqw;font-weight:700;margin-top:.6cqh">复盘</div>
+        <p class="mini" style="font-size:.8cqw;margin-top:.7cqh">发布 / 24h 回填 / 归因 / 迭代</p>
+        <div class="mono" style="font-size:.66cqw;margin-top:1.4cqh;color:rgba(160,185,215,.5)">一次只改一个变量<br>72h 后不再改</div>
+      </div>
+    </div>
+
+    <div class="hr" style="margin:3cqh 0 1.6cqh"></div>
+    <div class="cols c2 rv" style="gap:4cqw">
+      <div>
+        <div class="mono">TOOLCHAIN / 工具</div>
+        <div class="mini" style="margin-top:1cqh;font-size:.88cqw;line-height:2">
+          AI 图像 · Midjourney / 即梦 / ComfyUI / PS 精修<br>
+          AI 视频 · 可灵 / Runway / 首尾帧控制<br>
+          AI 音频 · 剪映 AI 配音 / 拟音素材 / BGM 卡点<br>
+          剪辑包装 · Premiere / 剪映专业版 / After Effects
+        </div>
+      </div>
+      <div>
+        <div class="mono">QUALITY GATE / 发布前 8 项</div>
+        <div class="cols c4" style="margin-top:1cqh;font-size:.84cqw;color:rgba(200,216,238,.78);gap:.5cqw 1.2cqw">
+          <div>① 人物一致</div><div>② 手部肢体</div><div>③ 文字符号</div><div>④ 口型配音</div>
+          <div>⑤ 镜头稳定</div><div>⑥ 透视画风</div><div>⑦ 音画字幕</div><div>⑧ 钩子尾句</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>PIPELINE</span><span>05</span></div>
+</div></section>
+
+<!-- ============ 06 项目一封面 ============ -->
+<section class="slide"><div class="stage dark" style="padding:0">
+  <img src="assets/film_07.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,6,14,.55) 0%,rgba(3,6,14,.05) 40%,rgba(3,6,14,.88) 78%,#03060E 100%)"></div>
+  <div style="position:absolute;left:5.2cqw;top:7cqh;z-index:3">
+    <div class="kicker"><i></i>PROJECT 01 <b>/ 原 创 影 片</b></div>
+  </div>
+  <div style="position:absolute;left:5.2cqw;right:5.2cqw;bottom:8.6cqh;z-index:3">
+    <div class="mono" style="color:var(--amber);letter-spacing:.42em">THE ARITHMETIC OF MERCY</div>
+    <div style="font-size:4.4cqw;font-weight:700;margin-top:1.2cqh;letter-spacing:.04em">慈 悲 的 算 术</div>
+    <div class="sub" style="font-size:1.05cqw;color:rgba(220,232,248,.8)">4′30″ · 1920×1080 · 24fps · 英文旁白 / 中英双语字幕 · 2.39:1</div>
+    <div style="display:flex;gap:5cqw;margin-top:3cqh">
+      <div><div style="font-family:var(--disp);font-size:2cqw;font-weight:700;color:var(--ice)">34</div><div class="mono" style="font-size:.68cqw">镜头 / 全部原创</div></div>
+      <div><div style="font-family:var(--disp);font-size:2cqw;font-weight:700;color:var(--ice)">1</div><div class="mono" style="font-size:.68cqw">人完成全流程</div></div>
+      <div><div style="font-family:var(--disp);font-size:2cqw;font-weight:700;color:var(--ice)">2</div><div class="mono" style="font-size:.68cqw">处绝对无声</div></div>
+      <div><div style="font-family:var(--disp);font-size:2cqw;font-weight:700;color:var(--ice)">0</div><div class="mono" style="font-size:.68cqw">素材库依赖</div></div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>PROJECT 01 / ORIGINAL FILM</span><span>06</span></div>
+</div></section>
+
+<!-- ============ 07 项目一逻辑 ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● PROJECT 01 / LOGIC</span><span>THE ARITHMETIC OF MERCY</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>PROJECT 01 <b>/ 为 什 么 这 么 拍</b></div>
+    <h1 class="big rv">不 拍 死 了 多 少 人，<span class="thin">拍 一 群 人 怎 么 把 自 己 算 进 去</span></h1>
+    <div class="sub rv">A plague film without a single corpse. Only the arithmetic of a choice.</div>
+    <div class="hr rv"></div>
+
+    <div class="cols c2 rv" style="gap:4cqw;grid-template-columns:1.15fr 1fr">
+      <div>
+        <p class="lead" style="font-size:1.02cqw">
+          1665 年，英国德比郡亚姆村。瘟疫随一匹伦敦来的布进村，全村自我隔离 14 个月，死亡约 260 人，换取周边地区未被卷入。<br><br>
+          这不是灾难片，是一道<em>道德算术</em>：一个村庄，除以自己的死亡，乘以所有没有死的人。<br><br>
+          结构上用「微观 → 宏观 → 微观」：从一只跳蚤开始，拉到海上航路、一个国家，最后回到同一只跳蚤——但尺度反转，这次是「人主动选择变小」。
+        </p>
+        <div style="margin-top:3.4cqh;border-left:2px solid #C2410C;padding-left:1.6cqw">
+          <div style="font-family:var(--serif);font-style:italic;font-size:1.15cqw;line-height:1.8;color:var(--ink)">
+            “We are the same size to something.<br>And mercy is the only <b style="color:#C2410C">arithmetic</b> that makes us larger.”
+          </div>
+          <div class="cap">全片最后一句旁白 —— 也是唯一允许抒情的地方</div>
+        </div>
+      </div>
+      <div style="display:grid;gap:1.6cqh">
+        <div class="glass card" style="padding:1.6cqh 1.5cqw">
+          <div class="mono" style="color:#C2410C">① 不拍惨，拍「算」</div>
+          <div class="mini" style="font-size:.84cqw;margin-top:.6cqh">黑死病的影像已经饱和，但「道德算术」这个切口是空的。全片以「数」的动作贯穿：数跳蚤、数船、数日子、数死者、数省下的命。</div>
+        </div>
+        <div class="glass card" style="padding:1.6cqh 1.5cqw">
+          <div class="mono" style="color:#C2410C">② 声音先于画面</div>
+          <div class="mini" style="font-size:.84cqw;margin-top:.6cqh">38Hz 次声贯穿全片，只在两处断掉：开场前 2.2 秒、妻子死讯之后 0.6 秒。在最有情绪的地方拿掉声音。</div>
+        </div>
+        <div class="glass card" style="padding:1.6cqh 1.5cqw">
+          <div class="mono" style="color:#C2410C">③ 每条史实都可辩护</div>
+          <div class="mini" style="font-size:.84cqw;margin-top:.6cqh">死亡人数、抵达时间、传播路线，学界有争议处旁白直接说「没有人能数清」。不为戏剧性改数字。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cols c4 rv d3" style="gap:1cqw;margin-top:2.8cqh">
+      <div class="shot" style="height:15cqh"><img src="assets/film_05.jpg"><span class="tag">SC.12 · 界石与醋</span></div>
+      <div class="shot" style="height:15cqh"><img src="assets/film_03.jpg"><span class="tag">SC.09 · 村庄剪影</span></div>
+      <div class="shot" style="height:15cqh"><img src="assets/film_08.jpg"><span class="tag">SC.28 · 烛火熄灭</span></div>
+      <div class="shot" style="height:15cqh"><img src="assets/film_02.jpg"><span class="tag">SC.15 · 航路图</span></div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>PROJECT 01 / LOGIC</span><span>07</span></div>
+</div></section>
+
+<!-- ============ 08 项目一技术 ============ -->
+<section class="slide"><div class="stage dark">
+  <div class="topmeta"><span>● PROJECT 01 / CRAFT</span><span>THE ARITHMETIC OF MERCY</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>PROJECT 01 <b>/ 技 术 与 署 名</b></div>
+    <h1 class="big rv">这 条 片 子 的 每 一 帧，<span class="thin">都 是 写 出 来 的</span></h1>
+    <div class="sub rv">Procedural film: every pixel computed, every sound synthesized. No stock footage.</div>
+    <div class="hr rv"></div>
+    <div class="cols c2 rv" style="gap:2.6cqw;grid-template-columns:1.4fr 1fr">
+      <div class="shot" style="height:38cqh"><img src="assets/film_01.jpg"><span class="tag">SC.07 · 血液里的细菌 · 程序化粒子 · 全片唯一的红</span></div>
+      <div>
+        <div class="mono">RENDER PIPELINE / 制作管线</div>
+        <div class="mini" style="margin-top:1.2cqh;font-size:.86cqw;line-height:1.9">
+          <b>画面</b>　程序化生成：Canvas 2D + WebCodecs，逐帧计算粒子 / 等高线 / 地图航线 / 烛光 / 静脉，无素材库<br>
+          <b>声音</b>　Python 合成：次声、心跳、弓弦、硬币落醋、极远合唱；母带轻压缩 + 9kHz 降嘶<br>
+          <b>字幕</b>　双语 SRT / ASS，衬线英文 + 宋体中文，画幅内安全区<br>
+          <b>规格</b>　1920×1080 / 24fps / H.264 3Mbps + AAC 192k 立体声
+        </div>
+        <div class="hr" style="margin:2cqh 0 1.6cqh"></div>
+        <div class="mono">CREDITS / 署名</div>
+        <div style="margin-top:1cqh;font-family:var(--serif);font-size:.94cqw;line-height:2;color:rgba(220,232,248,.85);letter-spacing:.04em">
+          A FILM BY &nbsp;<b>唐睿</b><br>
+          WRITTEN &amp; DIRECTED &nbsp;<b>唐睿</b><br>
+          CINEMATOGRAPHY &nbsp;唐睿<br>
+          ORIGINAL SCORE &nbsp;唐睿<br>
+          SOUND DESIGN &nbsp;唐睿<br>
+          EDITED BY &nbsp;唐睿<br>
+          <span style="color:var(--amber)">PRODUCED BY &nbsp;唐睿</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>PROJECT 01 / CRAFT</span><span>08</span></div>
+</div></section>
+
+<!-- ============ 09 项目二封面 ============ -->
+<section class="slide"><div class="stage dark" style="padding:0">
+  <img src="assets/scifi_cover.jpg" class="kb" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,6,14,.82) 0%,rgba(3,6,14,.18) 26%,rgba(3,6,14,.10) 46%,rgba(3,6,14,.90) 78%,#03060E 100%)"></div>
+  <div style="position:absolute;left:5.2cqw;top:7cqh;z-index:3">
+    <div class="kicker"><i></i>PROJECT 02 <b>/ 科 幻 剧 情 短 片</b></div>
+  </div>
+  <div style="position:absolute;left:5.2cqw;right:5.2cqw;bottom:8.6cqh;z-index:3">
+    <div class="mono" style="color:var(--ice);letter-spacing:.42em">MEMORY PROTOCOL : SECTOR ZERO</div>
+    <div style="font-size:4.4cqw;font-weight:700;margin-top:1.2cqh;letter-spacing:.04em">记 忆 协 议 · 零 号 城 区</div>
+    <div class="sub" style="font-size:1.05cqw;color:rgba(220,232,248,.8)">120″ · 赛博朋克世界观 · 80+ 镜号台本 · 编剧 / 镜头规划 / 全流程后期精剪</div>
+    <div style="display:flex;gap:5cqw;margin-top:3cqh">
+      <div><div style="font-family:var(--disp);font-size:2cqw;font-weight:700;color:var(--ice)">80+</div><div class="mono" style="font-size:.68cqw">镜号台本</div></div>
+      <div><div style="font-family:var(--disp);font-size:2cqw;font-weight:700;color:var(--ice)">6</div><div class="mono" style="font-size:.68cqw">类高难镜头</div></div>
+      <div><div style="font-family:var(--disp);font-size:2cqw;font-weight:700;color:var(--ice)">120″</div><div class="mono" style="font-size:.68cqw">成片时长</div></div>
+      <div><div style="font-family:var(--disp);font-size:2cqw;font-weight:700;color:var(--ice)">1</div><div class="mono" style="font-size:.68cqw">人独立完成</div></div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>PROJECT 02 / AI SCI-FI SHORT</span><span>09</span></div>
+</div></section>
+
+<!-- ============ 10 项目二方法 ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● PROJECT 02 / METHOD</span><span>MEMORY PROTOCOL</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>PROJECT 02 <b>/ 复 杂 机 位 下 的 角 色 一 致 性</b></div>
+    <h1 class="big rv">最 难 的 不 是 生 成，<span class="thin">是 第 37 个 镜 头 里 那 个 人 还 是 他</span></h1>
+    <div class="sub rv">Character consistency, under 80+ cuts, high motion, and POV transitions.</div>
+    <div class="hr rv"></div>
+    <div class="cols c5 rv" style="gap:1cqw">
+      <div class="shot" style="height:24cqh"><img src="assets/scifi_00.jpg"><span class="tag">POV 穿梭</span></div>
+      <div class="shot" style="height:24cqh"><img src="assets/scifi_01.jpg"><span class="tag">机甲变身</span></div>
+      <div class="shot" style="height:24cqh"><img src="assets/scifi_02.jpg"><span class="tag">巨物对峙</span></div>
+      <div class="shot" style="height:24cqh"><img src="assets/scifi_03.jpg"><span class="tag">格斗交锋</span></div>
+      <div class="shot" style="height:24cqh"><img src="assets/scifi_04.jpg"><span class="tag">城市远景</span></div>
+    </div>
+    <div class="cap rv">《记忆协议：零号城区》成片截帧 · 五个不同类型的镜头</div>
+    <div class="cols c3 rv d2" style="gap:2.6cqw;margin-top:2.6cqh">
+      <div>
+        <div class="mono" style="color:#C2410C">01 / 先锁「人」，再锁「戏」</div>
+        <p class="mini" style="font-size:.86cqw;margin-top:.8cqh">每个主要角色先出三视图锚点（正 / 侧 / 背 + 五官特写），后续所有镜头从锚点出发做图生视频。角色设定写进模板固定段，不靠每次重写。</p>
+      </div>
+      <div>
+        <div class="mono" style="color:#C2410C">02 / 用关键帧「焊」住运动</div>
+        <p class="mini" style="font-size:.86cqw;margin-top:.8cqh">高速动作不用纯文生视频，改「首帧 + 尾帧」双关键帧约束，把形变坍塌压在一个镜头内部，剪辑用 2–3 个短镜拼连贯动作。</p>
+      </div>
+      <div>
+        <div class="mono" style="color:#C2410C">03 / 一致性是选出来的</div>
+        <p class="mini" style="font-size:.86cqw;margin-top:.8cqh">同镜生成 3–4 版，按「五官 / 服饰 / 光影方向」三项打分选片；单镜重抽不超过 3 次，超了就改分镜——改脚本比硬抽便宜。</p>
+      </div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>PROJECT 02 / METHOD</span><span>10</span></div>
+</div></section>
+
+<!-- ============ 11 项目三封面 ============ -->
+<section class="slide"><div class="stage dark">
+  <div class="topmeta"><span>● PROJECT 03 / AI DRAMA</span><span>NETEASE GAMES INTERNSHIP</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>PROJECT 03 <b>/ 网 易 互 娱 · A I 漫 剧 工 业 化</b></div>
+    <h1 class="big rv">不 是 会 用 工 具，<span class="thin">是 能 把 它 变 成 产 线</span></h1>
+    <div class="sub rv">Inside a real AI-drama production: script breakdown → asset → shot → audio-driven lip-sync → batch output.</div>
+    <div class="hr rv"></div>
+    <div class="shot rv" style="height:34cqh"><img src="assets/wf1.jpg" style="object-position:center top"><span class="tag">内部 AI 漫剧生产工具 · 剧本解析 → 资产制作 → 分集制作 · 角色模型卡 + 音频驱动（已脱敏）</span></div>
+    <div class="cols c4 rv d2" style="gap:2.4cqw;margin-top:2.4cqh">
+      <div><div class="mono">STEP 1</div><div style="font-size:1.02cqw;font-weight:700;margin-top:.4cqh">剧本解析</div><div class="mini" style="font-size:.82cqw;margin-top:.5cqh">台本拆成分集 / 片段，标出戏剧冲突与情绪高潮点</div></div>
+      <div><div class="mono">STEP 2</div><div style="font-size:1.02cqw;font-weight:700;margin-top:.4cqh">资产制作</div><div class="mini" style="font-size:.82cqw;margin-top:.5cqh">角色模型卡（三视图锚点）+ 场景锚点，锁死外观</div></div>
+      <div><div class="mono">STEP 3</div><div style="font-size:1.02cqw;font-weight:700;margin-top:.4cqh">分镜制作</div><div class="mini" style="font-size:.82cqw;margin-top:.5cqh">逐镜提示词 + 音频驱动，口型 / 呼吸 / 情绪跟着音轨走</div></div>
+      <div><div class="mono">STEP 4</div><div style="font-size:1.02cqw;font-weight:700;margin-top:.4cqh">批量输出</div><div class="mini" style="font-size:.82cqw;margin-top:.5cqh">批量生成 + 选片 → 进 PR / 剪映精修与包装</div></div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>PROJECT 03 / AI DRAMA</span><span>11</span></div>
+</div></section>
+
+<!-- ============ 12 项目三细节 ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● PROJECT 03 / PIPELINE</span><span>CHARACTER CONSISTENCY</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>PROJECT 03 <b>/ 角 色 一 致 性 与 批 处 理</b></div>
+    <h1 class="big rv">先 做 三 视 图，<span class="thin">再 谈 生 成</span></h1>
+    <div class="sub rv">Turnaround sheets first, generation second. That is how a series stays on-model.</div>
+    <div class="hr rv"></div>
+    <div class="cols c3 rv" style="gap:1.6cqw">
+      <div>
+        <div class="shot" style="height:22cqh"><img src="assets/wf2.jpg" style="object-position:center 30%"><span class="tag">角色三视图矩阵 · 每角色 20+ 锚点</span></div>
+        <div class="cap">统一棚拍光 / 白底 / 正侧背同框 —— 后续所有镜头的「身份证」</div>
+      </div>
+      <div>
+        <div class="shot" style="height:22cqh"><img src="assets/wf4.jpg" style="object-position:center 35%"><span class="tag">分镜板 · 镜头帧 + 完成度节点 97%</span></div>
+        <div class="cap">用画布管理 80+ 镜：哪一镜已出、待改、卡在一致性</div>
+      </div>
+      <div>
+        <div class="shot" style="height:22cqh"><img src="assets/wf_overseas.jpg" style="object-position:center 40%"><span class="tag">海外线 · 三视图 1152×2048 → 2016×864</span></div>
+        <div class="cap">同一角色：概念图 → 三视图 → 分镜 → 成片，逐级锁定</div>
+      </div>
+    </div>
+    <div class="cols c3 rv d2" style="gap:2.6cqw;margin-top:2.8cqh">
+      <div class="glass card" style="padding:2cqh 1.6cqw">
+        <div style="font-size:1cqw;font-weight:700">提示词模板库</div>
+        <div class="mini" style="font-size:.84cqw;margin-top:.6cqh">把「角色 / 场景 / 光位 / 景别 / 运镜」拆成可替换变量，同一套模板跑完整季。</div>
+      </div>
+      <div class="glass card" style="padding:2cqh 1.6cqw">
+        <div style="font-size:1cqw;font-weight:700">镜头批处理</div>
+        <div class="mini" style="font-size:.84cqw;margin-top:.6cqh">按「同场景 / 同角色 / 同光位」聚类批量跑，减少风格跳变，<b>单套物料提效 60%</b>。</div>
+      </div>
+      <div class="glass card" style="padding:2cqh 1.6cqw">
+        <div style="font-size:1cqw;font-weight:700">连戏检查清单</div>
+        <div class="mini" style="font-size:.84cqw;margin-top:.6cqh">五官 / 服饰 / 光影方向 / 道具位置四项逐镜比对，不过就回退锚点重出。</div>
+      </div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>PROJECT 03 / PIPELINE</span><span>12</span></div>
+</div></section>
+
+<!-- ============ 13 项目四 商业 ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● PROJECT 04 / BRAND VIDEO</span><span>COMMERCIAL DELIVERY</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>PROJECT 04 <b>/ 商 业 项 目 · 企 业 宣 传 短 视 频</b></div>
+    <h1 class="big rv">把 工 业 硬 核，<span class="thin">讲 成 大 众 愿 意 看 的 东 西</span></h1>
+    <div class="sub rv">B2B brand video: cable manufacturing, turned into vertical short-form.</div>
+    <div class="hr rv"></div>
+    <div class="cols c6 rv" style="gap:1cqw">
+      <div class="shot" style="height:26cqh"><img src="assets/biz1_00.jpg"><span class="tag">01</span></div>
+      <div class="shot" style="height:26cqh"><img src="assets/biz1_01.jpg"><span class="tag">02</span></div>
+      <div class="shot" style="height:26cqh"><img src="assets/biz2_00.jpg"><span class="tag">03</span></div>
+      <div class="shot" style="height:26cqh"><img src="assets/biz2_01.jpg"><span class="tag">04</span></div>
+      <div class="shot" style="height:26cqh"><img src="assets/biz3_00.jpg"><span class="tag">05</span></div>
+      <div class="shot" style="height:26cqh"><img src="assets/biz3_01.jpg"><span class="tag">06</span></div>
+    </div>
+    <div class="cap rv">广州番禺电缆集团 · 品牌短视频（竖屏 9:16，AI 生成 + 后期包装）</div>
+    <div class="cols c3 rv d2" style="gap:2.6cqw;margin-top:2.2cqh">
+      <div><div class="mono">接需求</div><p class="mini" style="font-size:.86cqw;margin-top:.6cqh">把「品牌卖点 + 客户痛点」翻译成 3 个可拍的画面方向，先给参考片和脚本，不先给成片。</p></div>
+      <div><div class="mono">控节奏</div><p class="mini" style="font-size:.86cqw;margin-top:.6cqh">微距特写 + 拟音 + 快节奏动效；工业质感要硬，但开头 3 秒必须软到普通人愿意看。</p></div>
+      <div><div class="mono">按数据改</div><p class="mini" style="font-size:.86cqw;margin-top:.6cqh">按完播反馈逆向优化开头 3 秒话术密度，改的是开头，不是整条。</p></div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>PROJECT 04 / BRAND VIDEO</span><span>13</span></div>
+</div></section>
+
+<!-- ============ 14 账号方案 ============ -->
+<section class="slide"><div class="stage dark">
+  <div class="topmeta"><span>● ACCOUNT PLAN</span><span>GAME STREAMER · FAN EDIT SERIES</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>ACCOUNT PLAN <b>/ 游 戏 主 播 泛 娱 乐 二 创</b></div>
+    <h1 class="big rv">《 主 播 的 另 一 条 时 间 线 》<span class="thin"> · 一 个 母 题</span></h1>
+    <div class="sub rv">If that night, he had chosen differently. —— 竖屏 45–55 秒 · 周更 4–5 条</div>
+    <div class="hr rv"></div>
+
+    <div class="cols c2 rv" style="gap:3.4cqw;grid-template-columns:1.05fr 1fr">
+      <div>
+        <div class="glass" style="padding:2.2cqh 1.8cqw">
+          <div class="mono" style="color:var(--amber)">母 题 / THE PREMISE</div>
+          <div style="font-family:var(--serif);font-style:italic;font-size:1.4cqw;margin-top:.8cqh">「如果那一下，他换了选择。」</div>
+          <div class="mini" style="font-size:.86cqw;margin-top:1.2cqh">
+            每条视频只做一件事：取一个主播真实发生过的<em>「意难平瞬间」</em>，用 AI 生成另一条时间线，把「如果当时……」拍出来。<br><br>
+            母题是句式，不是故事 —— 主播在换、游戏在换，句式不用换，所以能系列化。
+          </div>
+        </div>
+        <div class="cols c2" style="gap:1.2cqw;margin-top:1.4cqh">
+          <div class="glass" style="padding:1.4cqh 1.2cqw">
+            <div class="mono" style="font-size:.66cqw">固定结构</div>
+            <div class="mini" style="font-size:.78cqw;margin-top:.5cqh;line-height:1.8">0–3s 原声钩子<br>3–8s 立情境<br>8–38s AI 反转<br>38–48s 回现实<br>48–52s 固定尾句</div>
+          </div>
+          <div class="glass" style="padding:1.4cqh 1.2cqw">
+            <div class="mono" style="font-size:.66cqw">固定资产</div>
+            <div class="mini" style="font-size:.78cqw;margin-top:.5cqh;line-height:1.8">固定尾句「这条时间线，<br>替他走完了。」<br>固定 0.8s 转场<br>固定封面版式</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="mono">CONTENT MATRIX / 内容矩阵</div>
+        <table style="margin-top:1cqh">
+          <tr><th style="width:34%">内容线</th><th style="width:14%">占比</th><th>作用</th></tr>
+          <tr><td class="k">主线 · 遗憾补完</td><td class="a">50%</td><td>立账号母题，决定「关不关注」</td></tr>
+          <tr><td class="k">支线 · 沙雕改编</td><td class="a">25%</td><td>拉泛娱乐流量，降低门槛</td></tr>
+          <tr><td class="k">热点快反</td><td class="a">15%</td><td>24h 内跟版本 / 赛事 / 名场面</td></tr>
+          <tr><td class="k">评论区点播</td><td class="a">10%</td><td>用评论做选题，养粉丝参与感</td></tr>
+        </table>
+        <div class="mono" style="margin-top:2.4cqh">BANK / 选题库</div>
+        <div class="mini" style="font-size:.86cqw;margin-top:.6cqh">60 条储备选题，每条标注：热点类型 / 平台 / 形式 / AI 介入度 / 复刻难度 / 优先级，可直接导入排期表（节选见 S19）。</div>
+        <div style="font-family:var(--serif);font-style:italic;font-size:1cqw;color:var(--amber);margin-top:2.4cqh">「不写游戏攻略，写主播的遗憾。观众看的是人，不是局。」</div>
+      </div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>ACCOUNT PLAN</span><span>14</span></div>
+</div></section>
+
+<!-- ============ 15 账号作品 ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● ACCOUNT WORKS</span><span>DOUYIN · COMPANY-OPERATED</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>ACCOUNT WORKS <b>/ 账 号 作 品 与 链 接</b></div>
+    <h1 class="big rv">这 个 账 号，<span class="thin">是 我 在 网 易 互 娱 实 习 期 间 替 公 司 运 营 的</span></h1>
+    <div class="sub rv">Not a personal account. Operated for the company during my internship — content, editing, and publishing.</div>
+    <div class="hr rv"></div>
+
+    <div class="cols c2 rv" style="gap:3.4cqw;grid-template-columns:1.25fr 1fr">
+      <div>
+        <div class="glass card" style="padding:2.8cqh 2.2cqw">
+          <div class="mono">LINK / 链接</div>
+          <a href="https://v.douyin.com/YjJrjhLU2ZM/" target="_blank" rel="noopener"
+             style="display:block;margin-top:1.2cqh;font-family:var(--mono);font-size:1.5cqw;color:#1D5FA8;text-decoration:none;letter-spacing:.02em;word-break:break-all;border-bottom:1px solid rgba(74,158,255,.35);padding-bottom:1cqh">
+            https://v.douyin.com/YjJrjhLU2ZM/
+          </a>
+          <div class="mini" style="font-size:.88cqw;margin-top:1.6cqh">
+            <b>性质说明：</b>该账号为本人于<b>网易互娱实习期间代公司运营</b>的内容账号，非个人账号。本人负责其中的选题、脚本、AI 画面生成与后期剪辑；账号归属公司。
+          </div>
+          <div class="mini" style="font-size:.88cqw;margin-top:1.2cqh">
+            <b>可展示内容：</b>已发布作品的画面风格、剪辑节奏、封面版式与账号整体内容结构；涉及公司版权的素材不在本作品集中转载。
+          </div>
+        </div>
+        <div class="cols c3" style="gap:1.2cqw;margin-top:1.6cqh">
+          <div class="glass" style="padding:1.4cqh 1.2cqw"><div class="mono" style="font-size:.66cqw">我负责</div><div class="mini" style="font-size:.8cqw;margin-top:.5cqh">选题 / 脚本 / AI 生成 / 剪辑</div></div>
+          <div class="glass" style="padding:1.4cqh 1.2cqw"><div class="mono" style="font-size:.66cqw">协作</div><div class="mini" style="font-size:.8cqw;margin-top:.5cqh">与运营对齐排期与选题方向</div></div>
+          <div class="glass" style="padding:1.4cqh 1.2cqw"><div class="mono" style="font-size:.66cqw">产出</div><div class="mini" style="font-size:.8cqw;margin-top:.5cqh">按周稳定交付，含封面与字幕</div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div class="card" style="position:relative;width:12.6cqw;aspect-ratio:9/16;border-radius:1.6cqw;overflow:hidden;
+             border:1px solid rgba(143,216,255,.35);background:linear-gradient(168deg,#0B1E3A 0%,#12325C 52%,#0A1830 100%);
+             box-shadow:0 1.6cqh 3.6cqh rgba(10,26,48,.28)">
+          <div style="position:absolute;top:1.1cqh;left:50%;transform:translateX(-50%);width:3.2cqw;height:.42cqh;border-radius:99px;background:rgba(255,255,255,.22)"></div>
+          <div style="position:absolute;inset:0;background:
+               radial-gradient(55% 45% at 50% 40%, rgba(143,216,255,.30), transparent 72%),
+               radial-gradient(40% 30% at 78% 78%, rgba(255,176,32,.18), transparent 70%)"></div>
+          <div style="position:absolute;inset:0;
+               background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+               background-size:2.1cqw 2.1cqw"></div>
+          <div style="position:absolute;left:50%;top:43%;transform:translate(-50%,-50%);width:3.4cqw;height:3.4cqw;border-radius:50%;
+               border:1px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06)">
+            <div style="width:0;height:0;border-left:1.05cqw solid rgba(255,255,255,.92);border-top:.72cqw solid transparent;border-bottom:.72cqw solid transparent;margin-left:.28cqw"></div>
+          </div>
+          <div class="mono" style="position:absolute;left:0;right:0;bottom:3.1cqh;text-align:center;font-size:.6cqw;color:rgba(255,255,255,.82);letter-spacing:.12em">DOUYIN · 内容账号</div>
+          <div class="mono" style="position:absolute;left:0;right:0;bottom:1.7cqh;text-align:center;font-size:.56cqw;color:rgba(143,216,255,.85);letter-spacing:.16em">TAP LINK TO VIEW</div>
+          <div style="position:absolute;left:50%;bottom:.6cqh;transform:translateX(-50%);width:4.4cqw;height:.34cqh;border-radius:99px;background:rgba(255,255,255,.30)"></div>
+        </div>
+        <div class="cap" style="text-align:center;margin-top:1.4cqh">点击左侧链接，即可查看账号作品</div>
+      </div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>ACCOUNT WORKS</span><span>15</span></div>
+</div></section>
+
+<!-- ============ 16 脚本文档 A ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● SCRIPT 01</span><span>SHOOTING SCRIPT · EP01</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>SCRIPT 01 <b>/ 脚 本 文 档 · 逐 镜 到 秒</b></div>
+    <h1 class="big rv">EP01《三十连败的那一夜》<span class="thin"> · 52″ / 11 镜</span></h1>
+    <div class="sub rv">A full shooting script: timecode, picture, sound, subtitle, and the AI note for every single shot.</div>
+    <div class="hr rv"></div>
+    <div class="cols c3 rv" style="gap:1.4cqw;margin-bottom:1.8cqh">
+      <div class="glass" style="padding:1.3cqh 1.4cqw"><div class="mono" style="color:#C2410C;font-size:.66cqw">钩子</div><div class="mini" style="font-size:.8cqw;margin-top:.4cqh">「再来一把，就一把」——第 31 次</div></div>
+      <div class="glass" style="padding:1.3cqh 1.4cqw"><div class="mono" style="color:#C2410C;font-size:.66cqw">情绪</div><div class="mini" style="font-size:.8cqw;margin-top:.4cqh">意难平 / 代偿爽感 · 只有一种情绪</div></div>
+      <div class="glass" style="padding:1.3cqh 1.4cqw"><div class="mono" style="color:#C2410C;font-size:.66cqw">规格</div><div class="mini" style="font-size:.8cqw;margin-top:.4cqh">52 秒 / 11 镜 / 竖屏 9:16</div></div>
+    </div>
+    <table class="rv">
+      <tr><th style="width:14%">时间码</th><th style="width:40%">画面 / 动作</th><th style="width:26%">声音 / 字幕</th><th style="width:20%">AI 干预点</th></tr>
+      <tr><td class="k">00:00–00:03</td><td>主播原声「再来一把」，画面压暗只留血条残影</td><td>同期声 + 字幕「第 31 次」</td><td>—</td></tr>
+      <tr><td class="k">00:03–00:06</td><td>黑屏白字：如果那一下，他没手抖呢？</td><td>低频 riser 起</td><td>—</td></tr>
+      <tr><td class="k">00:06–00:11</td><td>AI：雨夜废墟，角色残血站在 Boss 面前，镜头缓推</td><td>雨声 + 心跳</td><td>图生视频，首帧锁角色</td></tr>
+      <tr><td class="k">00:11–00:17</td><td>AI：Boss 起手大招，角色侧闪，慢动作 0.3 倍</td><td>BGM 鼓点进入</td><td>「时间拉伸」提示词</td></tr>
+      <tr><td class="k">00:17–00:22</td><td>AI：一击命中，血条清零，镜头绕角色半圈</td><td>音效爆点 + 静音 0.5 秒</td><td>「环绕运镜」</td></tr>
+      <tr><td class="k">00:22–00:27</td><td>AI：角色收刀，背对镜头，字幕「一次过」</td><td>环境声回落</td><td>—</td></tr>
+      <tr><td class="k">00:27–00:32</td><td>反转：AI 角色回头，脸是主播本人（游戏内形象）</td><td>旁白「另一个我，替我赢了」</td><td>换脸需授权，未授权用剪影</td></tr>
+      <tr><td class="k">00:32–00:38</td><td>切回真实：主播瘫在椅子上，屏幕还是失败界面</td><td>键盘声 + 叹气</td><td>—</td></tr>
+      <tr><td class="k">00:38–00:44</td><td>字幕：两条时间线，都算数。</td><td>BGM 副歌留白</td><td>—</td></tr>
+      <tr><td class="k">00:44–00:48</td><td>主播原声（真实素材）：「明天再打」</td><td>同期声</td><td>—</td></tr>
+      <tr><td class="k">00:48–00:52</td><td>固定尾句「这条时间线，替他走完了」+ 下集预告</td><td>固定音效</td><td>—</td></tr>
+    </table>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>SCRIPT / EP01</span><span>16</span></div>
+</div></section>
+
+<!-- ============ 17 分镜手稿 ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● STORYBOARD</span><span>EP01 · 11 SHOTS</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>STORYBOARD <b>/ 分 镜 手 稿 · 手 绘 六 镜</b></div>
+    <h1 class="big rv">先 画 后 拍，<span class="thin">六 张 纸 定 下 十 一 镜</span></h1>
+    <div class="sub rv">Drawn before generated — framing, lens, camera move and the AI note, locked on paper first.</div>
+    <div class="hr rv"></div>
+
+    <div class="cols c3 rv" style="gap:1.5cqw 1.6cqw">
+      <div><div class="shot sbcard" style="aspect-ratio:16/9"><img src="assets/sb_01.jpg"></div><div class="sbcap">SH01 · 原声钩子 / WS 全景 / FIXED</div></div>
+      <div><div class="shot sbcard" style="aspect-ratio:16/9"><img src="assets/sb_02.jpg"></div><div class="sbcap">SH02 · 字幕卡 / TITLE / BLACK</div></div>
+      <div><div class="shot sbcard" style="aspect-ratio:16/9"><img src="assets/sb_03.jpg"></div><div class="sbcap">SH03 · 雨夜废墟 / WS 全景 / DOLLY IN</div></div>
+      <div><div class="shot sbcard" style="aspect-ratio:16/9"><img src="assets/sb_04.jpg"></div><div class="sbcap">SH04 · 侧闪慢镜 / MS 中景 / SLOW 0.3x</div></div>
+      <div><div class="shot sbcard" style="aspect-ratio:16/9"><img src="assets/sb_05.jpg"></div><div class="sbcap">SH05 · 命中环绕 / CU 特写 / ORBIT</div></div>
+      <div><div class="shot sbcard" style="aspect-ratio:16/9"><img src="assets/sb_06.jpg"></div><div class="sbcap">SH06 · 回头剪影 / CU 特写 / FIXED</div></div>
+    </div>
+    <div class="cap rv"分镜手稿为本人手绘（数字板），每张标注镜号 / 时间码 / 景别 / 机位；带 AI 红印的镜头为生成段</div>
+
+    <div class="cols c3 rv d2" style="gap:2.6cqw;margin-top:2.2cqh">
+      <div>
+        <div class="mono" style="color:#C2410C">01 / 怎么画</div>
+        <p class="mini" style="font-size:.86cqw;margin-top:.6cqh">每张只画四件事：人在哪、镜在哪、光从哪来、观众该看哪。不画细节，画“节奏”。</p>
+      </div>
+      <div>
+        <div class="mono" style="color:#C2410C">02 / 为什么先画</div>
+        <p class="mini" style="font-size:.86cqw;margin-top:.6cqh">AI 生成有随机性，但镜号不能有。先在纸上确认景别与运动，生成时才知道要哪一张。</p>
+      </div>
+      <div>
+        <div class="mono" style="color:#C2410C">03 / 能证明什么</div>
+        <p class="mini" style="font-size:.86cqw;margin-top:.6cqh">这套手稿能直接给摄影、剪辑、外包看，不需要我在旁边解释。</p>
+      </div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>STORYBOARD / EP01</span><span>唐睿</span><span>17</span></div>
+</div></section>
+
+<!-- ============ 17 脚本文档 B ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● SCRIPT 02</span><span>SHOOTING SCRIPT · EP02–EP03</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>SCRIPT 02 <b>/ 另 外 两 集 · 同 一 结 构</b></div>
+    <h1 class="big rv">EP02 / EP03<span class="thin"> · 换情绪与主角，结构不动</span></h1>
+    <div class="sub rv">Same five-beat structure. Different emotion, different protagonist. That is what "reusable" looks like.</div>
+    <div class="hr rv"></div>
+    <div class="cols c2 rv" style="gap:2.4cqw">
+      <div>
+        <div class="mono" style="color:#C2410C">EP02《队友挂机的那五分钟》· 48″ / 10 镜</div>
+        <table style="margin-top:.8cqh;font-size:.84cqw">
+          <tr><th style="width:22%">时间码</th><th>画面 / 声音</th></tr>
+          <tr><td class="k">00:00–00:04</td><td>游戏内视角：队友原地转圈，主播念经「他又去拿外卖了」</td></tr>
+          <tr><td class="k">00:04–00:08</td><td>黑屏字幕：这五分钟，他去哪了？+ 电梯音效</td></tr>
+          <tr><td class="k">00:08–00:14</td><td>AI：队友在便利店挑关东煮，暖光，手持感</td></tr>
+          <tr><td class="k">00:14–00:20</td><td>AI：他在电梯里遇到同样挂机的对手，两人对视</td></tr>
+          <tr><td class="k">00:20–00:26</td><td>AI：两人在楼道石头剪刀布，决定谁先回去</td></tr>
+          <tr><td class="k">00:26–00:31</td><td>AI：队友端着关东煮冲回电脑前</td></tr>
+          <tr><td class="k">00:31–00:36</td><td>切回真实：队友回来了，第一句话「刚拿外卖」</td></tr>
+          <tr><td class="k">00:36–00:41</td><td>字幕：原来他真的去拿外卖了。+ 冷场 1 秒</td></tr>
+          <tr><td class="k">00:41–00:45</td><td>主播沉默两秒，爆发：「你早说啊！」</td></tr>
+          <tr><td class="k">00:45–00:48</td><td>固定尾句 + 互动字幕「你队友挂机时在干嘛？」</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="mono" style="color:#C2410C">EP03《那句「我上我也行」》· 50″ / 10 镜</div>
+        <table style="margin-top:.8cqh;font-size:.84cqw">
+          <tr><th style="width:22%">时间码</th><th>画面 / 声音</th></tr>
+          <tr><td class="k">00:00–00:04</td><td>截图：粉丝评论「我上我也行」，红框放大</td></tr>
+          <tr><td class="k">00:04–00:07</td><td>主播原声：「行，那你上。」</td></tr>
+          <tr><td class="k">00:07–00:13</td><td>AI：普通玩家宿舍，深夜，屏幕亮着，手在抖</td></tr>
+          <tr><td class="k">00:13–00:19</td><td>AI：他打出完美操作，队友表情凝固</td></tr>
+          <tr><td class="k">00:19–00:25</td><td>AI：镜头拉远，宿舍墙上贴着主播海报（埋彩蛋）</td></tr>
+          <tr><td class="k">00:25–00:30</td><td>反转：画面切回现实，他其实在第一关死了</td></tr>
+          <tr><td class="k">00:30–00:35</td><td>字幕：所以这句话，谁说的都算数。</td></tr>
+          <tr><td class="k">00:35–00:40</td><td>主播原声：「兄弟，来，我教你。」</td></tr>
+          <tr><td class="k">00:40–00:46</td><td>AI：两人并排坐，一老一新，屏幕同框</td></tr>
+          <tr><td class="k">00:46–00:50</td><td>固定尾句 + 下集预告「评论区点播」</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="cols c3 rv d2" style="gap:2.4cqw;margin-top:2cqh">
+      <div><div class="mono">SOUND / 声音设计</div><div class="mini" style="font-size:.82cqw;margin-top:.5cqh">38Hz 次声铺底；心跳三次；两处绝对无声（开场前 2.2 秒、妻子死讯后 0.6 秒）。</div></div>
+      <div><div class="mono">PRODUCTION / 制作说明</div><div class="mini" style="font-size:.82cqw;margin-top:.5cqh">真人素材用主播授权原声；AI 段落先出锚点再图生视频，单镜 ≤ 8 秒；未授权换脸一律用剪影。</div></div>
+      <div><div class="mono">DELIVERY / 交付</div><div class="mini" style="font-size:.82cqw;margin-top:.5cqh">竖屏 1080×1920 / 24fps / H.264 8Mbps / AAC 192k；三集共用封面模板与字幕样式。</div></div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>SCRIPT / EP02–EP03</span><span>18</span></div>
+</div></section>
+
+<!-- ============ 18 策划案例 A ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● CASE 01</span><span>CONTENT PLANNING · POSITIONING</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>CASE 01 <b>/ 内 容 策 划 案 例 · 定 位 与 矩 阵</b></div>
+    <h1 class="big rv">从 0 到 1 的 一 个 账 号，<span class="thin">我 会 这 样 定 位</span></h1>
+    <div class="sub rv">Positioning, persona, and a content matrix that can survive a hundred episodes.</div>
+    <div class="hr rv"></div>
+
+    <div class="cols c2 rv" style="gap:3.6cqw">
+      <div>
+        <div class="mono" style="color:#C2410C">01 / 一句话定位</div>
+        <div style="font-family:var(--serif);font-style:italic;font-size:1.3cqw;margin-top:.7cqh">「替全网主播补遗憾的人。」</div>
+        <div class="mini" style="font-size:.86cqw;margin-top:1cqh">一个自己也菜、但特别会替别人可惜的普通玩家。每条只做一件事：取一个真实发生过的意难平瞬间，用 AI 生成另一条时间线。</div>
+
+        <div class="mono" style="color:#C2410C;margin-top:2.6cqh">02 / 目标人群</div>
+        <div class="mini" style="font-size:.86cqw;margin-top:.7cqh">
+          核心：18–24 岁男性为主，在校或刚工作，每天刷短视频 1 小时以上，看直播但不一定打排位。<br>
+          为什么看：<b>代偿 + 共鸣</b>——想看「我做不到的事有人做到」，也想看「原来大神也会翻车」。<br>
+          次要：云玩家、退坑回坑玩家、主播粉丝（追的是人，不是游戏）。
+        </div>
+
+        <div class="mono" style="color:#C2410C;margin-top:2.6cqh">03 / 视觉与固定资产</div>
+        <div class="mini" style="font-size:.86cqw;margin-top:.7cqh">固定 0.8 秒「时间线撕裂」转场；固定片尾字幕卡；固定封面版式（左字右人 + 一句提问）。</div>
+      </div>
+      <div>
+        <div class="mono" style="color:#C2410C">04 / 内容矩阵（配比不是拍脑袋）</div>
+        <table style="margin-top:.9cqh">
+          <tr><th style="width:30%">内容线</th><th style="width:12%">占比</th><th>它在账号里干什么</th></tr>
+          <tr><td class="k">主线 · 遗憾补完</td><td class="a">50%</td><td>立母题，决定「关不关注」，所以必须过半</td></tr>
+          <tr><td class="k">支线 · 沙雕改编</td><td class="a">25%</td><td>拉泛娱乐流量，把非游戏人群拉进来</td></tr>
+          <tr><td class="k">热点快反</td><td class="a">15%</td><td>24 小时内跟版本 / 赛事，不为日更硬凑</td></tr>
+          <tr><td class="k">评论区点播</td><td class="a">10%</td><td>量最小，但是免费选题库，不能砍到 0</td></tr>
+        </table>
+
+        <div class="mono" style="color:#C2410C;margin-top:2.6cqh">05 / 选题五条硬标准（什么不拍）</div>
+        <div class="mini" style="font-size:.84cqw;margin-top:.7cqh;line-height:1.95">
+          ① <b>能一句话说完</b> —— 超过一句就是没想清楚<br>
+          ② <b>有具体数字或细节</b> ——「第 31 次」比「很多次」有效十倍<br>
+          ③ <b>情绪只有一种</b> —— 爽 / 酸 / 笑 / 燃，混着打等于没打<br>
+          ④ <b>不碰三件事</b> —— 灾难与逝者、地域与性别引战、未成年人擦边<br>
+          ⑤ <b>24 小时原则</b> —— 追不上就放弃，改做「延迟解读」
+        </div>
+      </div>
+    </div>
+    <div class="glass rv d2" style="margin-top:1.8cqh;padding:1.8cqh 2cqw">
+      <div class="mini" style="font-size:.88cqw"><b>为什么这样定：</b>这类账号的观众不是来看游戏的，是来看人的。所以我不写攻略、不写版本解析，写「主播的遗憾」——这是唯一能让人在评论区说「我也是」的切口。</div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>CASE / POSITIONING</span><span>19</span></div>
+</div></section>
+
+<!-- ============ 19 策划案例 B ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● CASE 02</span><span>CONTENT BANK · SCHEDULE · DATA</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>CASE 02 <b>/ 选 题 库 · 排 期 · 数 据</b></div>
+    <h1 class="big rv">60 条 选 题，30 天 排 期，<span class="thin">一 张 表 管 住 整 个 月</span></h1>
+    <div class="sub rv">A bank, a schedule, and a data loop — the part most portfolios skip.</div>
+    <div class="hr rv"></div>
+
+    <div class="mono rv" style="color:#C2410C">01 / 选题库节选（全库 60 条，此处 10 条）</div>
+    <table class="rv" style="margin-top:.7cqh;font-size:.84cqw">
+      <tr><th style="width:11%">编号</th><th style="width:30%">选题</th><th style="width:18%">内容线</th><th style="width:13%">AI 介入度</th><th style="width:12%">复刻难度</th><th style="width:12%">优先级</th></tr>
+      <tr><td class="k">IDEA-001</td><td>三十连败的那一夜</td><td>主线 · 遗憾补完</td><td>高</td><td>中</td><td class="a">★★★★★</td></tr>
+      <tr><td class="k">IDEA-002</td><td>队友挂机的那五分钟</td><td>支线 · 沙雕改编</td><td>中</td><td>中</td><td class="a">★★★★★</td></tr>
+      <tr><td class="k">IDEA-003</td><td>那句「我上我也行」</td><td>评论区点播</td><td>中</td><td>低</td><td class="a">★★★★</td></tr>
+      <tr><td class="k">IDEA-005</td><td>抽卡抽到第 300 发</td><td>支线 · 沙雕改编</td><td>低</td><td>低</td><td class="a">★★★★★</td></tr>
+      <tr><td class="k">IDEA-009</td><td>菜鸟第一次通关的样子</td><td>主线 · 遗憾补完</td><td>中</td><td>低</td><td class="a">★★★★★</td></tr>
+      <tr><td class="k">IDEA-011</td><td>十年老玩家的最后一次登录</td><td>主线 · 遗憾补完</td><td>高</td><td>高</td><td class="a">★★★★★</td></tr>
+      <tr><td class="k">IDEA-016</td><td>他第一次被认出来</td><td>主线 · 遗憾补完</td><td>中</td><td>中</td><td class="a">★★★★★</td></tr>
+      <tr><td class="k">IDEA-026</td><td>主播下播前的最后一句话</td><td>主线 · 遗憾补完</td><td>中</td><td>低</td><td class="a">★★★★★</td></tr>
+      <tr><td class="k">IDEA-043</td><td>凌晨三点还在排位的人</td><td>主线 · 遗憾补完</td><td>中</td><td>中</td><td class="a">★★★★★</td></tr>
+      <tr><td class="k">IDEA-060</td><td>网友投稿：我的意难平</td><td>评论区点播</td><td>高</td><td>中</td><td class="a">★★★★★</td></tr>
+    </table>
+
+    <div class="cols c2 rv d2" style="gap:2.6cqw;margin-top:2cqh;grid-template-columns:1.25fr 1fr">
+      <div>
+        <div class="mono" style="color:#C2410C">02 / 30 天冷启动</div>
+        <table style="margin-top:.7cqh;font-size:.8cqw">
+          <tr><th style="width:10%">周</th><th style="width:26%">动作</th><th>具体做什么</th></tr>
+          <tr><td class="k">W1</td><td>搭号 + 3 条样片</td><td>不追数据，只测「哪句钩子有人看完」；3 条用 3 种钩子</td></tr>
+          <tr><td class="k">W2</td><td>主线日更</td><td>固定结构只换选题，数据才有可比性；每条 24h 回填</td></tr>
+          <tr><td class="k">W3</td><td>单变量 AB</td><td>同一选题两版：换钩子 / 结尾 / 时长，一次只改一个</td></tr>
+          <tr><td class="k">W4</td><td>热点快反</td><td>跟 1–2 个版本或赛事热点，24 小时内出片</td></tr>
+          <tr><td class="k">W5</td><td>收敛模型</td><td>跑通的结构写成模板，砍掉不行方向，输出下月排期</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="mono" style="color:#C2410C">03 / 四个数据目标</div>
+        <div class="cols c2" style="gap:1.2cqw;margin-top:.9cqh">
+          <div class="glass" style="padding:1.3cqh 1.2cqw"><div class="mono" style="font-size:.64cqw">3 秒留存</div><div style="font-family:var(--disp);font-size:1.5cqw;font-weight:700;color:#C2410C;margin-top:.3cqh">&gt; 40%</div></div>
+          <div class="glass" style="padding:1.3cqh 1.2cqw"><div class="mono" style="font-size:.64cqw">完播率</div><div style="font-family:var(--disp);font-size:1.5cqw;font-weight:700;color:#C2410C;margin-top:.3cqh">18–28%</div></div>
+          <div class="glass" style="padding:1.3cqh 1.2cqw"><div class="mono" style="font-size:.64cqw">互动率</div><div style="font-family:var(--disp);font-size:1.5cqw;font-weight:700;color:#C2410C;margin-top:.3cqh">3–6%</div></div>
+          <div class="glass" style="padding:1.3cqh 1.2cqw"><div class="mono" style="font-size:.64cqw">涨粉率</div><div style="font-family:var(--disp);font-size:1.5cqw;font-weight:700;color:#C2410C;margin-top:.3cqh">0.5–1.5%</div></div>
+        </div>
+        <div class="mini" style="font-size:.78cqw;margin-top:1.2cqh;color:#6B7C92">以上为经验区间与目标值，非实测；实测数据受公司保密限制。</div>
+      </div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>CASE / BANK &amp; SCHEDULE</span><span>20</span></div>
+</div></section>
+
+<!-- ============ 20 创作解析 ============ -->
+<section class="slide"><div class="stage dark">
+  <div class="topmeta"><span>● PARSING</span><span>FOUR WORKS · CREATIVE NOTES</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>PARSING <b>/ 四 件 作 品 的 创 作 解 析</b></div>
+    <h1 class="big rv">每 件 作 品，<span class="thin">我 都 能 说 清 楚 三 件 事</span></h1>
+    <div class="sub rv">Why I made it, what the key decision was, and how I would answer if you asked.</div>
+    <div class="hr rv"></div>
+    <div class="cols c2 rv" style="gap:1.8cqw">
+      <div class="glass card" style="padding:1.8cqh 1.6cqw">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div style="font-size:1.02cqw;font-weight:700">01 · 《慈悲的算术》</div><div class="mono" style="font-size:.66cqw">4′30″</div>
+        </div>
+        <div class="mini" style="font-size:.8cqw;margin-top:.6cqh">
+          <b>为什么做：</b>黑死病影像已饱和，但「道德算术」这个切口是空的。<br>
+          <b>关键判断：</b>不拍尸体，只拍「数」；最动情处拿掉声音 0.6 秒。<br>
+          <b>被问怎么答：</b>「为什么不拍惨？」— 惨是共识，判断才是差异。
+        </div>
+      </div>
+      <div class="glass card" style="padding:1.8cqh 1.6cqw">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div style="font-size:1.02cqw;font-weight:700">02 · 《记忆协议》</div><div class="mono" style="font-size:.66cqw">120″ / 80+ 镜</div>
+        </div>
+        <div class="mini" style="font-size:.8cqw;margin-top:.6cqh">
+          <b>为什么做：</b>验证 AI 能不能撑「多镜头、有角色、有动作」的叙事。<br>
+          <b>关键判断：</b>高速动作改双关键帧约束；一致性是选出来的。<br>
+          <b>被问怎么答：</b>「第 37 镜为什么还是他？」— 前 36 镜同一锚点 + 逐镜连戏检查。
+        </div>
+      </div>
+      <div class="glass card" style="padding:1.8cqh 1.6cqw">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div style="font-size:1.02cqw;font-weight:700">03 · 漫剧工业化</div><div class="mono" style="font-size:.66cqw">实习项目</div>
+        </div>
+        <div class="mini" style="font-size:.8cqw;margin-top:.6cqh">
+          <b>为什么做：</b>「会做一条」和「能稳定做一百条」是两件事。<br>
+          <b>关键判断：</b>先锚点再生成；同场景同光位聚类批跑。<br>
+          <b>被问怎么答：</b>「60% 提效哪来的？」— 不是生成更快，是返工更少。
+        </div>
+      </div>
+      <div class="glass card" style="padding:1.8cqh 1.6cqw">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div style="font-size:1.02cqw;font-weight:700">04 · 主播二创方案</div><div class="mono" style="font-size:.66cqw">账号 / 3 集脚本</div>
+        </div>
+        <div class="mini" style="font-size:.8cqw;margin-top:.6cqh">
+          <b>为什么做：</b>观众看的是主播，不是游戏，所以做「遗憾」不做「攻略」。<br>
+          <b>关键判断：</b>母题必须是句式，不是故事，才能无限系列化。<br>
+          <b>被问怎么答：</b>「这号能起来吗？」— 不知道，但我知道怎么验证。
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>PARSING / FOUR WORKS</span><span>21</span></div>
+</div></section>
+
+<!-- ============ 21 数据复盘 ============ -->
+<section class="slide"><div class="stage light">
+  <div class="topmeta"><span>● DATA LOOP</span><span>DIAGNOSE BEFORE YOU EDIT</span><span>唐睿</span></div>
+  <div class="pad">
+    <div class="kicker rv"><i></i>DATA LOOP <b>/ 数 据 不 是 结 果，是 下 一 个 选 题 的 输 入</b></div>
+    <h1 class="big rv">只 盯 三 个 数 字，<span class="thin">先 归 因，再 改</span></h1>
+    <div class="sub rv">Diagnose before you edit. One variable at a time.</div>
+    <div class="hr rv"></div>
+    <div class="cols c2 rv" style="gap:3.4cqw">
+      <div>
+        <div class="mono" style="color:#C2410C">QUADRANT / 四象限归因</div>
+        <table style="margin-top:.9cqh">
+          <tr><th style="width:34%">数据表现</th><th style="width:26%">判断</th><th>动作</th></tr>
+          <tr><td class="k">高完播 · 高互动</td><td class="a">可复制模型</td><td>拆结构做模板，下周复用</td></tr>
+          <tr><td class="k">高完播 · 低互动</td><td class="a">缺互动钩子</td><td>结尾加提问 / 二选一 / 点播</td></tr>
+          <tr><td class="k">低完播 · 高互动</td><td class="a">题材对开头错</td><td>保选题，重做前 3 秒，48h 重发</td></tr>
+          <tr><td class="k">低完播 · 低互动</td><td class="a">直接淘汰</td><td>记录死因，不二次投入</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="mono" style="color:#C2410C">RULES / 单变量迭代五条</div>
+        <div class="mini" style="font-size:.88cqw;margin-top:.9cqh;line-height:2.1">
+          ① 一次只改一个变量（钩子 / 时长 / 结尾 / 封面）<br>
+          ② 24h 第一次判断，72h 最终判断，之后不再改<br>
+          ③ 连续 5 条同类型低完播，直接砍方向<br>
+          ④ 爆款后 72h 内复刻一版，否则热度会还回去<br>
+          ⑤ 周复盘会只看 3 个数字，不铺开
+        </div>
+        <div class="glass" style="margin-top:2cqh;padding:1.6cqh 1.6cqw">
+          <div class="mono" style="color:#C2410C;font-size:.68cqw">在字节做过的事</div>
+          <div class="mini" style="font-size:.84cqw;margin-top:.5cqh">追踪已发布内容的完播率、CTR 与受众跳出节点，对不同视觉方案做交叉分析，沉淀《视觉素材制作规范》，保障 10+ 项目按时交付。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>DATA LOOP</span><span>22</span></div>
+</div></section>
+
+<!-- ============ 22 结语 ============ -->
+<section class="slide"><div class="stage dark" style="padding:0">
+  <img src="assets/film_02.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,6,14,.86) 0%,rgba(3,6,14,.35) 42%,rgba(3,6,14,.90) 72%,#03060E 100%)"></div>
+  <div style="position:absolute;left:5.2cqw;right:5.2cqw;top:8cqh;z-index:3">
+    <div class="kicker"><i></i>THANK YOU <b>/ 如 果 要 用 一 句 话 收 尾</b></div>
+  </div>
+  <div style="position:absolute;left:5.2cqw;right:8cqw;top:32cqh;z-index:3">
+    <div style="font-family:var(--serif);font-style:italic;font-size:2.1cqw;line-height:1.85">
+      AI 只是把「敢想」的成本降到了零。<br>
+      真正稀缺的，是知道<em style="color:var(--amber);font-style:italic">什么值得被想出来</em>——以及把它稳定地做出来。
+    </div>
+    <div class="cap" style="margin-top:1.6cqh;font-size:.96cqw">所以我的作品集不是三条 demo，是一条能被复用的产线。</div>
+  </div>
+  <div style="position:absolute;left:5.2cqw;right:5.2cqw;bottom:8.8cqh;z-index:3;display:flex;justify-content:space-between;align-items:flex-end">
+    <div>
+      <div style="font-size:2.4cqw;font-weight:700;letter-spacing:.14em">唐 睿</div>
+      <div class="mini" style="font-size:.84cqw;margin-top:.8cqh">AI 短视频编导 · 2027 届 · 广州华商学院 网络与新媒体</div>
+      <div class="mini" style="font-size:.84cqw;margin-top:.3cqh">134-1016-4607 &nbsp;·&nbsp; 2901941647@qq.com</div>
+      <div class="mini" style="font-size:.84cqw;margin-top:.3cqh;color:var(--amber)">12 月初到岗 · 每周 5 天 · 6 个月及以上</div>
+    </div>
+    <div style="text-align:right">
+      <div class="mono" style="font-size:.66cqw">SCAN TO WATCH / 扫码看片</div>
+      <div style="width:7.9cqw;aspect-ratio:1;margin-top:.7cqh;margin-left:auto;padding:.42cqw;background:#fff;border-radius:.55cqw;
+           box-shadow:0 .6cqh 2cqh rgba(0,0,0,.45)">
+        <img src="assets/qr_demo.png" alt="扫码观看 demo" style="display:block;width:100%;height:100%;object-fit:contain">
+      </div>
+      <div class="mono" style="font-size:.56cqw;margin-top:.5cqh;text-align:right">4′30″ 原片 + 120″ 短剧</div>
+    </div>
+  </div>
+  <div class="metabar"><span><i class="dot"></i>NO HOOK. NO STORY.</span><span>END / 2027</span><span>唐睿</span><span>23</span></div>
+</div></section>
+
+</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+document.getElementById('tot').textContent=String(slides.length).padStart(2,'0');
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.querySelector('.stage').classList.add('in');});},{threshold:.3});
+slides.forEach(s=>io.observe(s));
+const bar=document.getElementById('bar'),curEl=document.getElementById('cur');
+function curIdx(){return Math.max(0,slides.findIndex(s=>{const r=s.getBoundingClientRect();return r.top<=innerHeight*.5&&r.bottom>innerHeight*.5;}));}
+function upd(){const i=curIdx();bar.style.width=((i+1)/slides.length*100)+'%';curEl.textContent=String(i+1).padStart(2,'0');}
+addEventListener('scroll',upd,{passive:true});upd();
+function go(n){const i=Math.min(slides.length-1,Math.max(0,n));slides[i].scrollIntoView({behavior:'smooth'});}
+addEventListener('keydown',e=>{
+  if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(curIdx()+1);}
+  if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(curIdx()-1);}
+  if(e.key==='Home'){e.preventDefault();go(0);}
+  if(e.key==='End'){e.preventDefault();go(slides.length-1);}
+});
+</script>
+
+<script>
+/* ---------- 高级动效 ---------- */
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const slides = [...document.querySelectorAll('.slide')];
+  const stages = slides.map(s => s.querySelector('.stage'));
+
+  /* 逐字入场：只处理标题与封面水印 */
+  if(!reduce){
+    document.querySelectorAll('h1.big, .wm').forEach(el=>{
+      const walk = (node)=>{
+        [...node.childNodes].forEach(n=>{
+          if(n.nodeType===3){
+            const txt = n.textContent;
+            if(!txt.trim()) return;
+            const frag = document.createDocumentFragment();
+            [...txt].forEach(ch=>{
+              if(ch===' '){ frag.appendChild(document.createTextNode(' ')); return; }
+              const sp = document.createElement('span');
+              sp.className='ch'; sp.textContent=ch;
+              frag.appendChild(sp);
+            });
+            n.replaceWith(frag);
+          } else if(n.nodeType===1){
+            walk(n);
+          }
+        });
+      };
+      walk(el);
+      el.querySelectorAll('.ch').forEach((c,i)=>{ c.style.transitionDelay = (i*26)+'ms'; });
+    });
+  }
+
+  /* 章节圆点 */
+  const dots = document.getElementById('dots');
+  slides.forEach((s,i)=>{
+    const d=document.createElement('i');
+    d.title = 'P'+String(i+1).padStart(2,'0');
+    d.addEventListener('click',()=>s.scrollIntoView({behavior:'smooth'}));
+    dots.appendChild(d);
+  });
+  const dotEls=[...dots.children];
+
+  /* 光标光晕（带缓动跟随） */
+  const spot=document.getElementById('spot');
+  let mx=innerWidth/2,my=innerHeight/2,sx=mx,sy=my,spotOn=false;
+  addEventListener('pointermove',e=>{
+    mx=e.clientX; my=e.clientY;
+    if(!spotOn){spot.classList.add('on');spotOn=true;}
+  },{passive:true});
+  addEventListener('pointerleave',()=>{spot.classList.remove('on');spotOn=false;});
+  (function loop(){
+    sx += (mx-sx)*0.12; sy += (my-sy)*0.12;
+    spot.style.transform = `translate(${sx}px,${sy}px)`;
+    requestAnimationFrame(loop);
+  })();
+
+  /* 磁性 pill */
+  if(!reduce){
+    document.querySelectorAll('.pill').forEach(p=>{
+      p.addEventListener('pointermove',e=>{
+        const r=p.getBoundingClientRect();
+        const dx=(e.clientX-(r.left+r.width/2))/r.width;
+        const dy=(e.clientY-(r.top+r.height/2))/r.height;
+        p.style.transform=`translate(${dx*7}px,${dy*5}px)`;
+      });
+      p.addEventListener('pointerleave',()=>{p.style.transform='';});
+    });
+  }
+
+  /* 视差：水印随滚动轻微位移 */
+  addEventListener('scroll',()=>{
+    if(reduce) return;
+    const i=slides.findIndex(s=>{const r=s.getBoundingClientRect();return r.top<=innerHeight*.5&&r.bottom>innerHeight*.5;});
+    if(i<0) return;
+    const wm=slides[i].querySelector('.wm');
+    if(wm){
+      const r=slides[i].getBoundingClientRect();
+      const t=(r.top)/innerHeight;      /* -1 .. 1 */
+      wm.style.transform=`translateX(-50%) translateY(${t*34}px)`;
+    }
+    dotEls.forEach((d,k)=>d.classList.toggle('on',k===i));
+  },{passive:true});
+
+  /* 入场观察 */
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+  },{threshold:.28});
+  slides.forEach(s=>io.observe(s));
+
+  /* 键盘 */
+  const cur=()=>Math.max(0,slides.findIndex(s=>{const r=s.getBoundingClientRect();return r.top<=innerHeight*.5&&r.bottom>innerHeight*.5;}));
+  const go=n=>slides[Math.min(slides.length-1,Math.max(0,n))].scrollIntoView({behavior:'smooth'});
+  addEventListener('keydown',e=>{
+    if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur()+1);}
+    if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur()-1);}
+    if(e.key==='Home'){e.preventDefault();go(0);}
+    if(e.key==='End'){e.preventDefault();go(slides.length-1);}
+  });
+
+  /* 进度条 */
+  const bar=document.getElementById('bar');
+  addEventListener('scroll',()=>{
+    const i=cur();
+    bar.style.width=((i+1)/slides.length*100)+'%';
+  },{passive:true});
+})();
+</script>
+
+</body>
+</html>
