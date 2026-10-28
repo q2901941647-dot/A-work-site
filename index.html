@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>唐睿 · 作品集 2027</title>
+<meta http-equiv="refresh" content="0; url=./site/">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--navy:#04080F;--ice:#8FD8FF;--amber:#FFB020;
+    --sans:"Bahnschrift","Microsoft YaHei UI","Microsoft YaHei",sans-serif;
+    --mono:Consolas,"Courier New",monospace}
+  html,body{height:100%}
+  body{background:
+      radial-gradient(120% 90% at 15% -10%,#0B1E3A 0%,rgba(6,14,28,0) 60%),
+      radial-gradient(90% 80% at 95% 0%,#0A1A33 0%,rgba(4,8,15,0) 62%),
+      linear-gradient(165deg,#050B17,#04080F 55%,#02040A);
+    color:#EAF2FF;font-family:var(--sans);display:flex;align-items:center;justify-content:center;
+    overflow:hidden;-webkit-font-smoothing:antialiased}
+  /* 细网格 */
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(143,216,255,.055) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(143,216,255,.055) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(120% 90% at 50% 0%,#000 20%,transparent 100%);
+            mask-image:radial-gradient(120% 90% at 50% 0%,#000 20%,transparent 100%)}
+  .wrap{position:relative;text-align:center;z-index:2;padding:0 24px}
+  .wm{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);
+    font-family:"Bahnschrift Condensed","Arial Black",sans-serif;font-weight:700;
+    font-size:clamp(72px,17vw,260px);line-height:.8;letter-spacing:.02em;white-space:nowrap;
+    color:transparent;-webkit-text-stroke:1px rgba(143,216,255,.18);pointer-events:none;z-index:0}
+  .ring{width:54px;height:54px;margin:0 auto 26px;border-radius:50%;
+    border:1px solid rgba(143,216,255,.28);position:relative}
+  .ring::after{content:"";position:absolute;inset:-1px;border-radius:50%;
+    border:1px solid transparent;border-top-color:var(--amber);
+    animation:spin .9s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  h1{font-size:clamp(18px,2.4vw,26px);font-weight:700;letter-spacing:.14em;margin-bottom:10px}
+  p{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:rgba(180,205,235,.55)}
+  a{display:inline-block;margin-top:26px;padding:10px 22px;border-radius:99px;
+    border:1px solid rgba(143,216,255,.35);color:var(--ice);text-decoration:none;
+    font-family:var(--mono);font-size:12px;letter-spacing:.16em;
+    transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .4s,color .4s,box-shadow .4s}
+  a:hover{transform:translateY(-2px);border-color:var(--amber);color:var(--amber);
+    box-shadow:0 8px 30px rgba(255,176,32,.16)}
+  .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--amber);
+    margin-right:8px;vertical-align:middle;animation:pulse 1.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+</style>
+</head>
+<body>
+<div class="wm">PORTFOLIO</div>
+<div class="wrap">
+  <div class="ring"></div>
+  <h1>唐睿 · 作品集 2027</h1>
+  <p><span class="dot"></span>正在进入 &nbsp;/&nbsp; LOADING</p>
+  <a href="./site/">立即进入 &nbsp;→</a>
+</div>
+<script>
+  // 0.8 秒后进入 site/（保留上面按钮作为兜底）
+  setTimeout(function(){ location.replace("./site/"); }, 800);
+</script>
+</body>
+</html>
